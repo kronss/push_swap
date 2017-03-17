@@ -12,69 +12,26 @@
 
 #include "push_swap.h"
 
-
-static t_stack		*create_elem(int a)
+static	void				validate(t_stack *list)
 {
-	t_stack			*new;
-	if (!(new = malloc(sizeof(t_stack *))))
-		return (NULL);
-	new->a = a;
-	new->next = NULL;
-	return (new);
-}
+	t_stack 		*tmp;
+	int				cmp;
 
-// void				list_push_back(t_stack **begin_list, int a)
-// {
-// 	t_stack			*list;
-
-// 	list = *begin_list;
-// 	if (list)
-// 	{
-// 		while (list->next)
-// 			list = list->next;
-// 		list->next = create_elem(a);
-// 	}
-// 	else
-// 		*begin_list = create_elem(a);
-// }
-
-void				list_push_front(t_stack **begin_list, int a)
-{
-	t_stack *tmp;
-
-	if (*begin_list)
+	cmp = list->a;
+	tmp = list->next;
+	while (tmp)
 	{
-		tmp = create_elem(a);
-		tmp->next = *begin_list;
-		*begin_list = tmp;
+		cmp == tmp->a ? ps_error(1) : 0;
+		tmp = tmp->next;
 	}
+	if (list->next == NULL)
+		return ;
 	else
-		*begin_list = create_elem(a);
+		validate(list->next);
 }
-
-
-// static	void				validate(t_stack *list)
-// {
-// 	t_stack 		*tmp;
-// 	int				cmp;
-
-// 	cmp = list->a;
-// 	tmp = list->next;
-// 	while (tmp)
-// 	{
-// 		cmp == tmp->a ? ps_error(1) : 0;
-// 		tmp = tmp->next;
-// 	}
-// 	if (list->next == NULL)
-// 		return ;
-// 	else
-// 		validate(list->next);
-// }
-
 
 void		checker(t_stack *list)
 {
-	// ft_printf("dick\n" );
 	int		tmp;
 
 	tmp = list->a;
@@ -101,7 +58,7 @@ int							main(int ar, char **av)
 	{
 		list_push_front(&list, ft_atoi(av[i]));
 	}
-	// (ar > 2) ? validate(list) : 0;
+	(ar > 2) ? validate(list) : 0;
 
 
 	checker(list);

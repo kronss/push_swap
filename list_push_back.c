@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_push_front.c                                  :+:      :+:    :+:   */
+/*   list_push_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,21 +22,6 @@ static t_stack		*create_elem(int a)
 	return (new);
 }
 
-// void				list_push_back(t_stack **begin_list, int a)
-// {
-// 	t_stack			*list;
-
-// 	list = *begin_list;
-// 	if (list)
-// 	{
-// 		while (list->next)
-// 			list = list->next;
-// 		list->next = create_elem(a);
-// 	}
-// 	else
-// 		*begin_list = create_elem(a);
-// }
-
 void				list_push_front(t_stack **begin_list, int a)
 {
 	t_stack *tmp;
@@ -46,6 +31,21 @@ void				list_push_front(t_stack **begin_list, int a)
 		tmp = create_elem(a);
 		tmp->next = *begin_list;
 		*begin_list = tmp;
+	}
+	else
+		*begin_list = create_elem(a);
+}
+
+void				list_push_back(t_stack **begin_list, int a)
+{
+	t_stack			*list;
+
+	list = *begin_list;
+	if (list)
+	{
+		while (list->next)
+			list = list->next;
+		list->next = create_elem(a);
 	}
 	else
 		*begin_list = create_elem(a);

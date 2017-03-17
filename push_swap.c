@@ -39,23 +39,19 @@ int							main(int ar, char **av)
 	list = NULL;
 	while (++i < ar)
 	{
-		list_push_front(&list, ft_atoi(av[i]));
+		list_push_back(&list, ft_atoi(av[i]));
 	}
 	(ar > 2) ? validate(list) : 0;
-
-
-
-
-
 	t_stack *tmp;							//debug
 	tmp = list;
 	i = 0;
+	ft_printf("   stack A | stack B \n");
+	ft_printf("-----------|---------\n");
 	while (tmp)
 	{
-		ft_printf("[%d] -- [%d]\n", i, tmp->a);
+		ft_printf("% -11d|\n", tmp->a);
 		tmp = tmp->next;
 		i++;
 	}
-
 	return (0);
 }

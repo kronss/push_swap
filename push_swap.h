@@ -46,7 +46,7 @@ typedef struct			s_stack
 
 
 
-// void				list_push_back(t_stack **begin_list, int a);
+void				list_push_back(t_stack **begin_list, int a);
 void				list_push_front(t_stack **begin_list, int a);
 void				ps_error(char i);
 

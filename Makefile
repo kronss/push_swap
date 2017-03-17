@@ -18,11 +18,13 @@ NAME_1 = push_swap
 
 NAME_2 = checker
  
-TEST = 5 8 6 3 1 2
+TEST = 2 1 3 6 8 5 -2147483648
 
-OBJECT_1 = push_swap.o list_push_front.o ps_error.o
+OBJECT_1 = push_swap.o list_push_back.o ps_error.o
 
-OBJECT_2 = checker.o
+OBJECT_2 = checker.o list_push_back.o ps_error.o
+
+INCL = libft/libft.a ft_printf/libftprintf.a
 
 .PHONY: all clean fclean re bug debug
 
@@ -33,12 +35,12 @@ all: $(NAME_1) $(NAME_2)
 $(NAME_1): $(OBJECT_1)
 		@make -C libft/
 		@make -C ft_printf/
-		$(GCC) $(F) -o $(NAME_1) $(OBJECT_1) -I minilibx_macos/libmlx.a libft/libft.a ft_printf/libftprintf.a
+		$(GCC) $(F) -o $(NAME_1) $(OBJECT_1) $(INCL)
 
 $(NAME_2): $(OBJECT_2)
 		@make -C libft/
 		@make -C ft_printf/
-		$(GCC) $(F) -o $(NAME_2) $(OBJECT_2) -I minilibx_macos/libmlx.a libft/libft.a ft_printf/libftprintf.a
+		$(GCC) $(F) -o $(NAME_2) $(OBJECT_2) $(INCL)
 
 clean:
 	@make clean -C libft/
@@ -59,7 +61,7 @@ c: all
 	./$(NAME_2) $(TEST)
 
 bug:
-	gcc -g $(F) -o $(NAME_1) push_swap.c libft/libft.a ft_printf/libftprintf.a 
+	gcc -g $(F) -o $(NAME_1) push_swap.c $(INCL) 
 
 debug: bug
 	lldb -- ./a.out $(TEST)
