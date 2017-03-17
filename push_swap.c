@@ -12,46 +12,67 @@
 
 #include "push_swap.h"
 
-static	void				validate(t_stack *list)
+static	void				validate(t_stack *stack_a)
 {
 	t_stack 		*tmp;
 	int				cmp;
 
-	cmp = list->a;
-	tmp = list->next;
+	cmp = stack_a->data;
+	tmp = stack_a->next;
 	while (tmp)
 	{
-		cmp == tmp->a ? ps_error(1) : 0;
+		cmp == tmp->data ? ps_error(1) : 0;
 		tmp = tmp->next;
 	}
-	if (list->next == NULL)
+	if (stack_a->next == NULL)
 		return ;
 	else
-		validate(list->next);
+		validate(stack_a->next);
 }
+
+
 
 int							main(int ar, char **av)
 {
-	t_stack			*list;
+	t_stack			*stack_a;
+	t_stack			*stack_b;
 	int				i;
 
 	i = 0;
-	list = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	while (++i < ar)
 	{
-		list_push_back(&list, ft_atoi(av[i]));
+		list_push_back(&stack_a, ft_atoi(av[i]), av[i]);
 	}
-	(ar > 2) ? validate(list) : 0;
-	t_stack *tmp;							//debug
-	tmp = list;
-	i = 0;
-	ft_printf("   stack A | stack B \n");
-	ft_printf("-----------|---------\n");
-	while (tmp)
-	{
-		ft_printf("% -11d|\n", tmp->a);
-		tmp = tmp->next;
-		i++;
-	}
+	(ar > 2) ? validate(stack_a) : 0;
+	
+
+	print_stacks(stack_a, stack_b);
+	make_sa(&stack_a);
+	print_stacks(stack_a, stack_b);
+	make_pb(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_pb(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_pb(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_pa(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_pa(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_pa(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_pa(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+
+
+	// make_ra(&stack_a);
+	// print_stacks(stack_a, stack_b);
+	// make_ss(&stack_a, &stack_b);
+	// print_stacks(stack_a, stack_b);
+	
+
+	// sleep(500);
 	return (0);
 }

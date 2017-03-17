@@ -17,11 +17,11 @@ static	void				validate(t_stack *list)
 	t_stack 		*tmp;
 	int				cmp;
 
-	cmp = list->a;
+	cmp = list->data;
 	tmp = list->next;
 	while (tmp)
 	{
-		cmp == tmp->a ? ps_error(1) : 0;
+		cmp == tmp->data ? ps_error(1) : 0;
 		tmp = tmp->next;
 	}
 	if (list->next == NULL)
@@ -34,10 +34,10 @@ void		checker(t_stack *list)
 {
 	int		tmp;
 
-	tmp = list->a;
+	tmp = list->data;
 	while (list)
 	{
-		if (!(tmp >= list->a))
+		if (!(tmp >= list->data))
 		{
 			ft_printf("KO\n");
 			return ;
@@ -56,24 +56,27 @@ int							main(int ar, char **av)
 	list = NULL;
 	while (++i < ar)
 	{
-		list_push_front(&list, ft_atoi(av[i]));
+		list_push_back(&list, ft_atoi(av[i]), av[i]);
 	}
 	(ar > 2) ? validate(list) : 0;
 
 
-	checker(list);
+	
 
 
 
 
 	t_stack *tmp;							//debug
 	tmp = list;
+	i = 0;
+	ft_printf("   stack A | stack B \n");
+	ft_printf("-----------|---------\n");
 	while (tmp)
 	{
-		ft_printf("[%d]\n", tmp->a);
+		ft_printf("% -11d|\n", tmp->data);
 		tmp = tmp->next;
 		i++;
 	}
-
+	checker(list);
 	return (0);
 }

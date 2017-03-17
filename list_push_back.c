@@ -17,30 +17,48 @@ static t_stack		*create_elem(int a)
 	t_stack			*new;
 	if (!(new = malloc(sizeof(t_stack *))))
 		return (NULL);
-	new->a = a;
+	new->data = a;
 	new->next = NULL;
 	return (new);
 }
 
-void				list_push_front(t_stack **begin_list, int a)
-{
-	t_stack *tmp;
+// void				list_push_front(t_stack **begin_list, int a)
+// {
+// 	t_stack *tmp;
 
-	if (*begin_list)
-	{
-		tmp = create_elem(a);
-		tmp->next = *begin_list;
-		*begin_list = tmp;
-	}
+// 	if (*begin_list)
+// 	{
+// 		tmp = create_elem(a);
+// 		tmp->next = *begin_list;
+// 		*begin_list = tmp;
+// 	}
+// 	else
+// 		*begin_list = create_elem(a);
+// }
+
+void				check_value(char *str)
+{
+	if (str[0] == '-' || str[0] == '+')
+		check_value(str + 1);		
+	else if (str[0] == '\0') 
+		ps_error(3);
 	else
-		*begin_list = create_elem(a);
+	{
+		while (*str != '\0')
+		{
+			if (!('0' <= *str && *str <= '9'))
+				ps_error(2);
+			str++;
+		}
+	}
 }
 
-void				list_push_back(t_stack **begin_list, int a)
+void				list_push_back(t_stack **begin_list, int a, char *str)
 {
 	t_stack			*list;
 
 	list = *begin_list;
+	check_value(str);
 	if (list)
 	{
 		while (list->next)
