@@ -12,71 +12,71 @@
 
 #include "push_swap.h"
 
-static	void				validate(t_stack *list)
-{
-	t_stack 		*tmp;
-	int				cmp;
-
-	cmp = list->data;
-	tmp = list->next;
-	while (tmp)
-	{
-		cmp == tmp->data ? ps_error(1) : 0;
-		tmp = tmp->next;
-	}
-	if (list->next == NULL)
-		return ;
-	else
-		validate(list->next);
-}
-
-void		checker(t_stack *list)
+static	void				checker(t_stack *stack_a, t_stack *stack_b)
 {
 	int		tmp;
 
-	tmp = list->data;
-	while (list)
+	tmp = stack_a->data;
+	if (stack_a)
 	{
-		if (!(tmp >= list->data))
+		while (stack_a)
 		{
-			ft_printf("KO\n");
-			return ;
-		}		
-		list = list->next;
+			// ft_printf("cheker %d\n", tmp);
+			if (tmp > stack_a->data)
+			{
+				ft_printf("KO\n");
+				return ;
+			}
+			tmp = stack_a->data;
+			stack_a = stack_a->next;
+		}
 	}
-	ft_printf("OK\n");
+	if (!stack_b && !stack_a)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 }
 
 int							main(int ar, char **av)
 {
+	t_stack			*stack_a;
+	t_stack			*stack_b;
 	int				i;
-	t_stack			*list;
+	char 			buf[100];
 
 	i = 0;
-	list = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	while (++i < ar)
 	{
-		list_push_back(&list, ft_atoi(av[i]), av[i]);
+		list_push_back(&stack_a, ft_atoi(av[i]), av[i]);
 	}
-	(ar > 2) ? validate(list) : 0;
+	(ar > 2) ? validate(stack_a) : 0;
 
-
+	// read(int fildes, void *buf, size_t nbyte);
+	while ((read(0, buf, 100)) > 0)
+	{
+		ft_printf("buf: [%s]\nstrlen buf [%d]\n", buf, ft_strlen(buf));
+	}
 	
 
-
-
-
-	t_stack *tmp;							//debug
-	tmp = list;
-	i = 0;
-	ft_printf("   stack A | stack B \n");
-	ft_printf("-----------|---------\n");
-	while (tmp)
-	{
-		ft_printf("% -11d|\n", tmp->data);
-		tmp = tmp->next;
-		i++;
-	}
-	checker(list);
+	print_stacks(stack_a, stack_b);
+	make_ra(&stack_a);
+	print_stacks(stack_a, stack_b);
+	make_ra(&stack_a);
+	print_stacks(stack_a, stack_b);	
+	make_pb(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_pb(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_ss(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_pa(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	make_pa(&stack_a, &stack_b);
+	print_stacks(stack_a, stack_b);
+	// make_sa(&stack_a);
+	// print_stacks(stack_a, stack_b);
+	checker(stack_a, stack_b);
 	return (0);
 }

@@ -18,13 +18,15 @@ NAME_1 = push_swap
 
 NAME_2 = checker
  
-TEST = 2 1 3 6 8 5
+TEST = 4 3 2 1
 
 OBJECT =  	list_push_back.o \
 			ps_error.o \
 			print_stacks.o \
 			make_ss.o \
-			make_rr.o
+			make_rr.o \
+			make_rrr.o \
+			validate.o
 
 OBJECT_1 = push_swap.o $(OBJECT)
 
