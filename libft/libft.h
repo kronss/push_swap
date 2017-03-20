@@ -105,5 +105,6 @@ int					ft_chrcount(char *str, char c);
 int					ft_atohex_shift_pointer(char **str);
 int					ft_atohex(char *str);
 int					ft_max(int a, int b);
+long				ft_atol(const char *str);
 
 #endif

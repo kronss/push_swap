@@ -12,13 +12,13 @@
 
 GCC = gcc
 
-# F = -Wall -Wextra -Werror
+F = -Wall -Wextra -Werror
 
 NAME_1 = push_swap
 
 NAME_2 = checker
  
-TEST = 4 3 2 1
+TEST = -v -f -c
 
 OBJECT =  	list_push_back.o \
 			ps_error.o \
@@ -26,11 +26,11 @@ OBJECT =  	list_push_back.o \
 			make_ss.o \
 			make_rr.o \
 			make_rrr.o \
-			validate.o
+			pre_validate.o
 
 OBJECT_1 = push_swap.o $(OBJECT)
 
-OBJECT_2 = checker.o $(OBJECT)
+OBJECT_2 = checker.o reading_commands.o $(OBJECT)
 
 INCL = libft/libft.a ft_printf/libftprintf.a
 
@@ -69,13 +69,22 @@ c: all
 	./$(NAME_2) $(TEST)
 
 bug:
-	gcc -g $(F) -o $(NAME_1) push_swap.c $(INCL) 
+	gcc -g $(F) -o $(NAME_2) checker.c reading_commands.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c $(INCL)
 
 debug: bug
-	lldb -- ./a.out $(TEST)
+	lldb -- $(NAME_2) $(TEST)
 
 %.o: ./%.c
 	$(GCC) $(F) -o $@ -c $< -I ./
 
 
 # ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
+
+# ra
+# ra
+# pb
+# pb
+# ss
+# pa
+# pa
+

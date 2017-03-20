@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   pre_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,4 +28,12 @@ void				validate(t_stack *stack_a)
 		return ;
 	else
 		validate(stack_a->next);
+}
+
+void				pre_validate(t_stack *stack_a)
+{
+	if (stack_a)
+		validate(stack_a);
+	else
+		exit(0);
 }

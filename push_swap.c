@@ -25,23 +25,23 @@ int							main(int ar, char **av)
 	{
 		list_push_back(&stack_a, ft_atoi(av[i]), av[i]);
 	}
-	(ar > 2) ? validate(stack_a) : exit(0);
+	(ar > 2) ? pre_validate(stack_a) : exit(0);
 
-	print_stacks(stack_a, stack_b);
-	make_ra(&stack_a);
-	print_stacks(stack_a, stack_b);
-	make_ra(&stack_a);
-	print_stacks(stack_a, stack_b);	
-	make_pb(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	make_pb(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	make_ss(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	make_pa(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	make_pa(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_ra(&stack_a);
+	// print_stacks(stack_a, stack_b);
+	// make_ra(&stack_a);
+	// print_stacks(stack_a, stack_b);	
+	// make_pb(&stack_a, &stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_pb(&stack_a, &stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_ss(&stack_a, &stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_pa(&stack_a, &stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_pa(&stack_a, &stack_b);
+	// print_stacks(stack_a, stack_b);
 
 	return (0);
 }

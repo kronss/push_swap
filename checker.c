@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static	void				checker(t_stack *stack_a, t_stack *stack_b)
+static	void	checker(t_stack *stack_a, t_stack *stack_b)
 {
 	int		tmp;
 
@@ -37,58 +37,59 @@ static	void				checker(t_stack *stack_a, t_stack *stack_b)
 		ft_printf("KO\n");
 }
 
-
-char	read_command_line(char **line, t_stack **stack_a, t_stack **stack_b)
+static	int		read_flags(t_block *block, char **av, int ar)
 {
-	ft_strlowcase(*line);
-	return (1);
+	int i;
+	int j;
+
+	i = 1;
+	
+	while (i < ar && av[i][0] == '-' && ft_strchr_f("vcf", av[i][1]))
+	{
+		j = 1;
+		while (av[i][j] != '\0')
+		{
+			if (av[i][j] == 'v')
+				block->debug = 1;
+			else if (av[i][j] == 'c')
+				block->color = 1;
+			else if (av[i][j] == 'f')
+				block->file = 1;
+			j++;
+		}
+		i++;
+	}
+	// ft_printf("block->debug == %d\nblock->color == %d\nblock->file == %d\n", block->debug, block->color, block->file);
+	return (i);
 }
 
-int							main(int ar, char **av)
+static	void		init_var(t_block *b, t_stack **s_a, t_stack **s_b)
 {
+	b->debug = 0;
+	b->file = 0;
+	b->color = 0;
+	*s_a = NULL;
+	*s_b = NULL;
+}
+
+int				main(int ar, char **av)
+{
+	t_block			block;
 	t_stack			*stack_a;
 	t_stack			*stack_b;
-	// t_operat		*operation;
 	int				i;
-	char 			*line;
 
-	i = 0;
-	stack_a = NULL;
-	stack_b = NULL;
-	while (++i < ar)
+	init_var(&block, &stack_a, &stack_b);
+	i = read_flags(&block, av, ar);
+	while (i < ar)
 	{
-		list_push_back(&stack_a, ft_atoi(av[i]), av[i]);
+		list_push_back(&stack_a, ft_atol(av[i]), av[i]);
+		i++;
 	}
-	(ar > 2) ? validate(stack_a) : exit(0);
-
-	// read(int fildes, void *line, size_t nbyte);
-	print_stacks(stack_a, stack_b);
-	while ((get_next_line(STDIN, &line)) > 0)
-	{
-		ft_strlowcase(line);
-		// read_command_line(&line, &stack_a, &stack_b);
-		// ft_printf("line: [%s]\nstrlen line [%d]\n", line, ft_strlen(line));
-	}
-	
-// ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
-
-	
-	make_ra(&stack_a);
-	print_stacks(stack_a, stack_b);
-	make_ra(&stack_a);
-	print_stacks(stack_a, stack_b);
-	make_pb(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	make_pb(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	make_ss(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	make_pa(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	make_pa(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
-	// make_sa(&stack_a);
-	// print_stacks(stack_a, stack_b);
+	pre_validate(stack_a);
+	/*========================================*/
+	print_stacks(stack_a, stack_b); //bonus
+	reading_commands(&stack_a, &stack_b);
 	checker(stack_a, stack_b);
 	return (0);
 }

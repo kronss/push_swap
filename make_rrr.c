@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void						make_rra(t_stack **head)
+void						make_rra(t_stack **head, char c)
 {
 	t_stack					*tmp;
 	t_stack					*will_be_head;
@@ -27,10 +27,10 @@ void						make_rra(t_stack **head)
 		(*head) = will_be_head;
 		tmp->next = NULL;
 	}
-	ft_printf("rra\n");
+	c == 1 ? ft_printf("rra\n") : 0;
 }
 
-void						make_rrb(t_stack **head)
+void						make_rrb(t_stack **head, char c)
 {
 	t_stack					*tmp;
 	t_stack					*will_be_head;
@@ -45,11 +45,12 @@ void						make_rrb(t_stack **head)
 		(*head) = will_be_head;
 		tmp->next = NULL;
 	}
-	ft_printf("rrb\n");
+	c == 1 ? ft_printf("rrb\n") : 0;
 }
 
 void						make_rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	make_rra(stack_a);
-	make_rrb(stack_b);
+	make_rra(stack_a, 0);
+	make_rrb(stack_b, 0);
+	ft_printf("rrr\n");
 }

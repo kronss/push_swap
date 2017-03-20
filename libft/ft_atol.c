@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/27 13:46:48 by ochayche          #+#    #+#             */
-/*   Updated: 2016/11/27 13:46:49 by ochayche         ###   ########.fr       */
+/*   Created: 2017/03/20 21:22:29 by ochayche          #+#    #+#             */
+/*   Updated: 2017/03/20 21:22:29 by ochayche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *str)
+long		ft_atol(const char *str)
 {
-	int		res;
+	long	res;
 	int		i;
 	char	charge;
 
