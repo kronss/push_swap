@@ -25,7 +25,7 @@ int							main(int ar, char **av)
 	{
 		list_push_back(&stack_a, ft_atoi(av[i]), av[i]);
 	}
-	(ar > 2) ? validate(stack_a) : 0;
+	(ar > 2) ? validate(stack_a) : exit(0);
 
 	print_stacks(stack_a, stack_b);
 	make_ra(&stack_a);

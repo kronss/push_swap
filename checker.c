@@ -37,12 +37,20 @@ static	void				checker(t_stack *stack_a, t_stack *stack_b)
 		ft_printf("KO\n");
 }
 
+
+char	read_command_line(char **line, t_stack **stack_a, t_stack **stack_b)
+{
+	ft_strlowcase(*line);
+	return (1);
+}
+
 int							main(int ar, char **av)
 {
 	t_stack			*stack_a;
 	t_stack			*stack_b;
+	// t_operat		*operation;
 	int				i;
-	char 			buf[100];
+	char 			*line;
 
 	i = 0;
 	stack_a = NULL;
@@ -51,20 +59,24 @@ int							main(int ar, char **av)
 	{
 		list_push_back(&stack_a, ft_atoi(av[i]), av[i]);
 	}
-	(ar > 2) ? validate(stack_a) : 0;
+	(ar > 2) ? validate(stack_a) : exit(0);
 
-	// read(int fildes, void *buf, size_t nbyte);
-	while ((read(0, buf, 100)) > 0)
+	// read(int fildes, void *line, size_t nbyte);
+	print_stacks(stack_a, stack_b);
+	while ((get_next_line(STDIN, &line)) > 0)
 	{
-		ft_printf("buf: [%s]\nstrlen buf [%d]\n", buf, ft_strlen(buf));
+		ft_strlowcase(line);
+		// read_command_line(&line, &stack_a, &stack_b);
+		// ft_printf("line: [%s]\nstrlen line [%d]\n", line, ft_strlen(line));
 	}
 	
+// ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
 
-	print_stacks(stack_a, stack_b);
+	
 	make_ra(&stack_a);
 	print_stacks(stack_a, stack_b);
 	make_ra(&stack_a);
-	print_stacks(stack_a, stack_b);	
+	print_stacks(stack_a, stack_b);
 	make_pb(&stack_a, &stack_b);
 	print_stacks(stack_a, stack_b);
 	make_pb(&stack_a, &stack_b);

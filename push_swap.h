@@ -32,8 +32,8 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-
-
+// # define ft_printf printf;
+// # define STDIN 0
 
 typedef struct			s_stack
 {
@@ -45,7 +45,6 @@ typedef struct			s_operat
 {
 	int					data;
 	struct	s_operat	*next;
-	
 }						t_operat;
 
 

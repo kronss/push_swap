@@ -19,7 +19,7 @@ char			*ft_strmap(char const *s, char (*f)(char))
 	char		*str;
 
 	if (!s || !f)
-		return (0);
+		return (NULL);
 	i = 0;
 	len = ft_strlen(s);
 	str = (char*)malloc(sizeof(char) * (len + 1));
@@ -33,5 +33,5 @@ char			*ft_strmap(char const *s, char (*f)(char))
 		str[i] = '\0';
 		return (str);
 	}
-	return (0);
+	return (NULL);
 }
