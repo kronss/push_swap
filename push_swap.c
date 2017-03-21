@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+int							look_mediana(stack_a, stack_b, int min, int max)
+{
+	int pvt;
+
+	while (stack_a)
+	{
+		stack_a->data > max
+		
+
+	}
+
+}
+
+
 int							main(int ar, char **av)
 {
 	t_stack			*stack_a;
@@ -23,25 +37,12 @@ int							main(int ar, char **av)
 	stack_b = NULL;
 	while (++i < ar)
 	{
-		list_push_back(&stack_a, ft_atoi(av[i]), av[i]);
+		list_push_back(&stack_a, ft_atol(av[i]), av[i]);
 	}
-	(ar > 2) ? pre_validate(stack_a) : exit(0);
-
-	// print_stacks(stack_a, stack_b);
-	// make_ra(&stack_a);
-	// print_stacks(stack_a, stack_b);
-	// make_ra(&stack_a);
-	// print_stacks(stack_a, stack_b);	
-	// make_pb(&stack_a, &stack_b);
-	// print_stacks(stack_a, stack_b);
-	// make_pb(&stack_a, &stack_b);
-	// print_stacks(stack_a, stack_b);
-	// make_ss(&stack_a, &stack_b);
-	// print_stacks(stack_a, stack_b);
-	// make_pa(&stack_a, &stack_b);
-	// print_stacks(stack_a, stack_b);
-	// make_pa(&stack_a, &stack_b);
-	// print_stacks(stack_a, stack_b);
+	pre_validate(stack_a);
+	/*=====================================================*/
+	print_stacks(stack_a, stack_b); //bonus
+	look_mediana(stack_a, stack_b, stack_a->data, stack_a->data);
 
 	return (0);
 }
