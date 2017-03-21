@@ -26,11 +26,16 @@ OBJECT =  	list_push_back.o \
 			make_ss.o \
 			make_rr.o \
 			make_rrr.o \
-			pre_validate.o
+			pre_validate.o \
+			init_var.o \
+			read_flags.o
 
-OBJECT_1 = push_swap.o $(OBJECT)
+OBJECT_1 = 	$(OBJECT) \
+			push_swap.o
 
-OBJECT_2 = checker.o reading_commands.o $(OBJECT)
+OBJECT_2 = 	$(OBJECT) \
+			checker.o \
+			reading_commands.o 
 
 INCL = libft/libft.a ft_printf/libftprintf.a
 

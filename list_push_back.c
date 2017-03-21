@@ -38,17 +38,20 @@ static t_stack		*create_elem(int a)
 
 void				check_value(char *str)
 {
+	int i;
+
+	i = 0;
 	if (str[0] == '-' || str[0] == '+')
 		check_value(str + 1);		
 	else if (str[0] == '\0') 
 		ps_error(3);
 	else
 	{
-		while (*str != '\0')
+		while (str[i] != '\0')
 		{
-			if (!('0' <= *str && *str <= '9'))
+			if (!('0' <= *str && *str <= '9') || i > 10)
 				ps_error(2);
-			str++;
+			i++;
 		}
 	}
 }

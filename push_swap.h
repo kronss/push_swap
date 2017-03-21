@@ -46,6 +46,7 @@ typedef struct			s_block
 	char				debug;
 	char				color;
 	char				file;
+	unsigned int		size;
 
 	// struct	s_stack		*stack_a;
 	// struct	s_stack		*stack_b;
@@ -55,22 +56,22 @@ typedef struct			s_block
 
 
 
-
-
-
-
-
+/* ===== general ====== */
 void				list_push_back(t_stack **begin_list, long a, char *str);
 // void				list_push_front(t_stack **begin_list, int a);
 void				ps_error(char i);
 void				print_stacks(t_stack *tmp, t_stack *stack_b);
-void				pre_validate(t_stack *stack_a);
+void				pre_validate(t_stack *stack_a, unsigned int *size);
+int					read_flags(t_block *block, char **av, int ar);
+void		init_var(t_block *b, t_stack **s_a, t_stack **s_b);
 
-//	checker
+
+
+/*==== checker =====================*/
+
 void				reading_commands(t_stack **stack_a, t_stack **stack_b);
 
-
-// operartion and dispalay
+/*=== operartion and dispalay =======*/
 void				make_sa(t_stack **head, char c);				//	1
 void				make_sb(t_stack **head, char c);				//	2
 void				make_ss(t_stack **stack_a, t_stack **stack_b);	//	3
