@@ -61,15 +61,15 @@ static	void	make_operation(char cmd, t_stack **stack_a, t_stack **stack_b)
 {
 	cmd == 1 ? make_sa(stack_a, 0) : 0;
 	cmd == 2 ? make_sb(stack_b, 0) : 0;
-	cmd == 3 ? make_ss(stack_a, stack_b) : 0;
+	cmd == 3 ? make_ss(stack_a, stack_b, 0) : 0;
 	cmd == 4 ? make_pa(stack_a, stack_b, 0) : 0;
 	cmd == 5 ? make_pb(stack_a, stack_b, 0) : 0;
 	cmd == 6 ? make_ra(stack_a, 0) : 0;
 	cmd == 7 ? make_rb(stack_b, 0) : 0;
-	cmd == 8 ? make_rr(stack_a, stack_b) : 0;
+	cmd == 8 ? make_rr(stack_a, stack_b, 0) : 0;
 	cmd == 9 ? make_rra(stack_a, 0) : 0;
 	cmd == 10 ? make_rrb(stack_b, 0) : 0;
-	cmd == 11 ? make_rrr(stack_a, stack_b) : 0;
+	cmd == 11 ? make_rrr(stack_a, stack_b, 0) : 0;
 }
 
 void			reading_commands(t_stack **stack_a, t_stack **stack_b)

@@ -18,7 +18,7 @@ NAME_1 = push_swap
 
 NAME_2 = checker
  
-TEST = -v -f -c 1  42  2111    43 2 4 8 19
+TEST = -v -f -c     4 52 89 -2 -6 -9 158
 
 OBJECT =  	list_push_back.o \
 			ps_error.o \
@@ -31,7 +31,8 @@ OBJECT =  	list_push_back.o \
 			read_flags.o
 
 OBJECT_1 = 	$(OBJECT) \
-			push_swap.o
+			push_swap.o \
+			frst_sort.o
 
 OBJECT_2 = 	$(OBJECT) \
 			checker.o \
@@ -72,15 +73,18 @@ r: all
 
 c: all
 	./$(NAME_2) $(TEST)
+# gcc -g -o push_swap list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c init_var.c read_flags.c push_swap.c
 
 bug:
-	gcc -g $(F) -o $(NAME_2) checker.c reading_commands.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c $(INCL)
+	# gcc -g $(F) -o $(NAME_2) checker.c reading_commands.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c $(INCL)
+	gcc -g $(F) -o $(NAME_1) list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c init_var.c read_flags.c push_swap.c $(INCL)
 
 debug: bug
-	lldb -- $(NAME_2) $(TEST)
+	lldb -- $(NAME_1) $(TEST)
 
 %.o: ./%.c
 	$(GCC) $(F) -o $@ -c $< -I ./
+
 
 
 # ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG

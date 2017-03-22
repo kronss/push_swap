@@ -51,7 +51,7 @@ int				main(int ar, char **av)
 		list_push_back(&stack_a, ft_atol(av[i]), av[i]);
 		i++;
 	}
-	pre_validate(stack_a, &block.size);
+	pre_validate(stack_a, &block);
 	/*========================================*/
 	print_stacks(stack_a, stack_b); //bonus
 	reading_commands(&stack_a, &stack_b);

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void				validate(t_stack *stack_a, unsigned int *size)
+void				validate(t_stack *stack_a, int *size)
 {
 	t_stack 		*tmp;
 	int				cmp;
@@ -33,10 +33,14 @@ void				validate(t_stack *stack_a, unsigned int *size)
 	}
 }
 
-void				pre_validate(t_stack *stack_a, unsigned int *size)
+void				pre_validate(t_stack *stack_a, t_block *block)
 {
 	if (stack_a)
-		validate(stack_a, size);
+	{
+		validate(stack_a, &block->size);
+		block->curr_size_a = block->size;
+		block->curr_size_b = 0;
+	}
 	else
 		exit(0);
 }

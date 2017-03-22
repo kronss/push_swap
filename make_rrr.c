@@ -48,9 +48,9 @@ void						make_rrb(t_stack **head, char c)
 	c == 1 ? ft_printf("rrb\n") : 0;
 }
 
-void						make_rrr(t_stack **stack_a, t_stack **stack_b)
+void						make_rrr(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	make_rra(stack_a, 0);
 	make_rrb(stack_b, 0);
-	ft_printf("rrr\n");
+	c == 1 ? ft_printf("rrr\n") : 0;
 }

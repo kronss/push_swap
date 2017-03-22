@@ -12,28 +12,6 @@
 
 #include "push_swap.h"
 
-// int				look_mediana(t_stack *stack_a, int min, int max)
-// {
-// 	t_stack *tmp;
-// 	int pvt;
-// 	int tmp_pvt;
-
-// 	tmp = stack_a;
-// 	while (tmp)
-// 	{
-// 		tmp->data > max ? max = tmp->data : 0;
-// 		tmp->data < min ? min = tmp->data : 0;
-// 		tmp = tmp->next;
-// 	}
-// 	tmp_pvt = (max + min) / 2;
-// 	ft_printf("min = %d\n", min);
-// 	ft_printf("max = %d\n", max);
-// 	// tmp = stack_a;
-// 	ft_printf("mediana = %d\n", tmp_pvt);
-
-// 	return (tmp_pvt);
-// }
-
 void	push_data_ta_arr(t_stack *stack_a, int *arr)
 {
 	unsigned int i;
@@ -49,41 +27,70 @@ void	push_data_ta_arr(t_stack *stack_a, int *arr)
 
 void		q_sort(int* s_arr, int first, int last)
 {
-    int i = first, j = last, x = s_arr[(first + last) / 2];
-
-    while (i <= j) {
-        while (s_arr[i] < x) i++;
-        while (s_arr[j] > x) j--;
-
-        if(i <= j) {
-            if (s_arr[i] > s_arr[j]) ft_swap(&s_arr[i], &s_arr[j]);
+    int i;
+    int j;
+    int x;
+    
+    i = first;
+    j = last;
+    x = s_arr[(first + last) / 2];
+    while (i <= j)
+    {
+        while (s_arr[i] < x)
+        	i++;
+        while (s_arr[j] > x)
+        	j--;
+        if(i <= j)
+        {
+            if (s_arr[i] > s_arr[j])
+            	ft_swap(&s_arr[i], &s_arr[j]);
             i++;
             j--;
         }
     } 
-
     if (i < last)
         q_sort(s_arr, i, last);
     if (first < j)
         q_sort(s_arr, first, j);
 }
 
-void begin_sorting(t_stack **stack_a, t_stack **stack_b, unsigned int size)
+
+void			work_1(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block)
 {
-	int arr[size];
+	print_stacks(*stack_a, *stack_b);
+	while (block->curr_size_a > 3)
+	{
+		// print_stacks(*stack_a, *stack_b);
+		if (arr[block->size - 3] > (*stack_a)->data)
+		{
+			make_pb(stack_a, stack_b, 1);
+			(block->curr_size_a)--;
+			(block->curr_size_b)++;
+		}
+		else
+			make_ra(stack_a, 1);
+		// sleep(1);
+	}
+	frst_sort(stack_a, stack_b, block);
+}
+
+void			begin_sorting(t_stack **stack_a, t_stack **stack_b, t_block *block)
+{
+	int arr[block->size];
 
 	push_data_ta_arr(*stack_a, arr);
-	for (unsigned int j = 0; j < size; ++j)
-	{
-		printf("arr[%u] == [%u]\n", j, (arr[j]));
-	}
-	q_sort(arr, 0, size - 1);
-	printf("===========\n");
-	for (unsigned int j = 0; j < size; ++j)
-	{
-		printf("arr[%u] == [%u]\n", j, (arr[j]));
-	}
-	if (size > 3)
+	// for (int j = 0; j < block->size; ++j)
+	// {
+	// 	ft_printf("arr[%u] == [%u]\n", j, (arr[j]));
+	// }
+	q_sort(arr, 0, block->size - 1);
+	ft_printf("===========\n");
+	// for (int j = 0; j < block->size; ++j)
+	// {
+	// 	ft_printf("arr[%u] == [%u]\n", j, (arr[j]));
+	// }
+	if (block->size > 3)
+		work_1(stack_a, stack_b, arr, block);
 		
 	// printf("dick\n");
 }
@@ -117,12 +124,12 @@ int								main(int ar, char **av)
 		list_push_back(&stack_a, ft_atol(av[i]), av[i]);
 		i++;
 	}
-	pre_validate(stack_a, &block.size);
+	pre_validate(stack_a, &block);
 	/*=====================================================*/
 	ft_printf("size %u\n", block.size);
-	begin_sorting(&stack_a, &stack_b, block.size);
+	begin_sorting(&stack_a, &stack_b, &block);
 
-	print_stacks(stack_a, stack_b); //bonus
+	// print_stacks(stack_a, stack_b); //bonus
 	// look_mediana(stack_a, stack_a->data, stack_a->next->data);
 
 

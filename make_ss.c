@@ -76,9 +76,9 @@ void			make_sb(t_stack **head, char c)
 	c == 1 ?  ft_printf("sb\n") : 0;
 }
 
-void			make_ss(t_stack **stack_a, t_stack **stack_b)
+void			make_ss(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	make_sa(stack_a, 0);
 	make_sb(stack_b, 0);
-	ft_printf("ss\n");
+	c == 1 ? ft_printf("ss\n") : 0;
 }
