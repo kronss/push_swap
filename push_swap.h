@@ -28,7 +28,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdlib.h> //dell
+# include <stdio.h> //dell
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
@@ -63,7 +63,9 @@ void				ps_error(char i);
 void				print_stacks(t_stack *tmp, t_stack *stack_b);
 void				pre_validate(t_stack *stack_a, unsigned int *size);
 int					read_flags(t_block *block, char **av, int ar);
-void		init_var(t_block *b, t_stack **s_a, t_stack **s_b);
+void				init_var(t_block *b, t_stack **s_a, t_stack **s_b);
+
+/* === push_swap ================== */
 
 
 
