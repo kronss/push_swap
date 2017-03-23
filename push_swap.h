@@ -72,7 +72,9 @@ void				init_var(t_block *b, t_stack **s_a, t_stack **s_b);
 
 
 void				frst_sort_3_elem(t_stack **stack_a, t_stack **stack_b, t_block *block);
+void				next_sort_3_elem(t_stack **stack_a, t_stack **stack_b, t_block *block);
 char				check_ss(t_stack *stack_b, t_block *block);
+char				check_rr_or_rrr(t_stack *stack_b, t_block *block);
 
 /*==== checker =====================*/
 

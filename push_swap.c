@@ -32,39 +32,39 @@ int 			find_pivot(int *arr, int begin, int max_size)
 	// 	printf("arr[%d] == [%d]\n", j, (arr[j]));
 	// }
 	// printf("=========\n");
-	int pivot_i;
+	// int pivot_i;
 
-	pivot_i = begin;
-	if (ABS(max_size - begin) < 4)
-		return (pivot_i);
-	else
-		return (find_pivot(arr, (begin + max_size)/2, max_size));
+	return ((begin + max_size) / 2);
+		// return (pivot_i);
+	// else
+	// 	return (find_pivot(arr, (begin + max_size)/2, max_size));
 }
 
 void			sort_2_elem(t_stack **stack_a, t_stack **stack_b, t_block *block)
 {
 	if ((*stack_a)->data > (*stack_a)->next->data)
 	{
-		ft_printf("===== 2 1 ==============================\n");
+		// ft_printf("===== 2 1 ==============================\n");
 		check_ss(*stack_b, block) ? make_ss(stack_a, stack_b, 1) : make_sa(stack_a, 1);
 	}
-	else
-		ft_printf("===== 1 2 ==============================\n");
+	// else
+	// 	ft_printf("===== 1 2 ==============================\n");
 }
 
 void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block)
 {
-	print_stacks(*stack_a, *stack_b);
+	// print_stacks(*stack_a, *stack_b); sleep(1);
 	// 	for (int j = 0; j < block->max_size; ++j)
 	// {
 	// 	printf("arr[%u] == [%u]\n", j, (arr[j]));
 	// }
-	// sleep(10);
-
+	// sleep(5);
+	// printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]); sleep(5);
 	while (block->curr_size_a > block->max_size - block->pivot_i)
 	{
 		print_stacks(*stack_a, *stack_b);
 		printf("arr[%d] > data[%d]\n", arr[block->pivot_i], (*stack_a)->data);
+		printf("pivot_ind %d\n", block->pivot_i);
 		if (arr[block->pivot_i] > (*stack_a)->data)
 		{
 			make_pb(stack_a, stack_b, 1);
@@ -73,50 +73,83 @@ void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *bloc
 		}
 		else
 			make_ra(stack_a, 1);
-			// sleep (1);
+			sleep (1);
 	}
+	block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size);
 	// sleep(100);
-	ft_printf("======FRST================================================FRST==============\n");
+	// ft_printf("======FRST================================================FRST==============\n");
 	block->curr_size_a == 3 ? frst_sort_3_elem(stack_a, stack_b, block) : 0;
 	block->curr_size_a == 2 ? sort_2_elem(stack_a, stack_b, block) : 0;
 	block->curr_size_a == 1 ? ft_printf(" ===== 1 ================================\n") : 0;
 }
 
-void			push_from_b(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block)
-{
-	block->pivot_i = find_pivot(arr, 2, block->pivot_i);
+// void			push_from_b(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block)
+// {
+// 	block->pivot_i = find_pivot(arr, 2, block->pivot_i);
 
-	printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]);
-		ft_printf("===========\n");
-	for (int j = 0; j < block->max_size; ++j)
-	{
-		printf("arr[%d] == [%d]\n", j, (arr[j]));
-	}
+// 	// printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]);
+// 		// ft_printf("===========\n");
+// 	// for (int j = 0; j < block->max_size; ++j)
+// 	// {
+// 	// 	printf("arr[%d] == [%d]\n", j, (arr[j]));
+// 	// }
 
-	// block->curr_size_b > 2 ? tmp = block->curr_size_a + 3 : 0;
-	// print_stacks(*stack_a, *stack_b);
-	// printf("tmp %d\n", tmp);
-	// printf("block->curr_size_a %d\n", block->curr_size_a);
-	// printf("arr[tmp] %d\n", arr[tmp]);
-	// printf("arr[tmp - size] %d\n", arr[tmp - block->size]);
+// 	// block->curr_size_b > 2 ? tmp = block->curr_size_a + 3 : 0;
+// 	// print_stacks(*stack_a, *stack_b);
+// 	// printf("tmp %d\n", tmp);
+// 	// printf("block->curr_size_a %d\n", block->curr_size_a);
+// 	// printf("arr[tmp] %d\n", arr[tmp]);
+// 	// printf("arr[tmp - size] %d\n", arr[tmp - block->size]);
 	
-	while (block->curr_size_a < block->max_size - block->pivot_i)
-	{
-		printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]);
-		print_stacks(*stack_a, *stack_b);
-		if (arr[block->pivot_i] <= (*stack_b)->data)
-		{
-			make_pa(stack_a, stack_b, 1);
-			(block->curr_size_a)++;
-			(block->curr_size_b)--;
-		}
-		else
-			make_rb(stack_b, 1);
-		sleep(4);
-	}
-	// frst_sort_3_elem(stack_a, stack_b, block);
-}
+// 	while (block->curr_size_a < block->max_size - block->pivot_i)
+// 	{
+// 		// printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]);
+// 		// print_stacks(*stack_a, *stack_b);
+// 		if (arr[block->pivot_i] <= (*stack_b)->data)
+// 		{
+// 			make_pa(stack_a, stack_b, 1);
+// 			(block->curr_size_a)++;
+// 			(block->curr_size_b)--;
+// 		}
+// 		else
+// 			make_rb(stack_b, 1);
+// 		// sleep(3);
+// 	}
+// 	next_sort_3_elem(stack_a, stack_b, block);
 
+// 	// block->curr_size_a == 3 ? next_sort_3_elem(stack_a, stack_b, block) : 0;
+// 	// block->curr_size_a == 2 ? sort_2_elem(stack_a, stack_b, block) : 0;
+// 	// block->curr_size_a == 1 ? ft_printf(" ===== 1 ================================\n") : 0;
+// }
+// void			push_from_b_last(stack_a, stack_b, arr, block)
+// {
+// 	if (block->curr_size_b == 3)
+// 	{
+// 		if ((*stack_b)->data > (*stack_b)->next->data) // c > b
+// 		{
+// 			if ((*stack_b)->next->data > (*stack_b)->next->next->data) //b > a
+// 			{
+// 				make_pa(stack_a, stack_b);
+// 				make_pa(stack_a, stack_b);
+// 				make_pa(stack_a, stack_b);
+// 			}
+// 			else
+// 			{
+// 				make_pa(stack_a, stack_b); // b < a
+// 				make_sb(stack_a, stack_b);
+// 				make_pa(stack_a, stack_b);
+// 				make_pa(stack_a, stack_b);
+// 			}
+// 		}
+// 	}
+// 	else if (block->curr_size_b == 2)
+// 	{
+
+// 	}	
+// 	else
+
+
+// }
 
 
 
@@ -126,24 +159,28 @@ void			begin_sorting(t_stack **stack_a, t_stack **stack_b, t_block *block)
 
 	push_data_ta_arr(*stack_a, arr);
 	q_sort(arr, 0, block->max_size - 1);
-	block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size - 1) + 1;
-	for (int j = 0; j < block->max_size; ++j)
-	{
-		printf("arr[%d] == [%d]\n", j, (arr[j]));
-	}
-	printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]);
-	ft_printf("===========\n");
-	sleep(10);
+	block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size - 1);
+	// for (int j = 0; j < block->max_size; ++j)
+	// {
+	// 	printf("arr[%d] == [%d]\n", j, (arr[j]));
+	// }
+	// printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]); sleep(5);
+	// ft_printf("===========\n");
+	
 	// for (int j = 0; j < block->size; ++j)
 	// {
 	// 	ft_printf("arr[%u] == [%u]\n", j, (arr[j]));
 	// }
 	// if (block->curr_size_a > 3)
 	// {
+	while (block->curr_size_a > 3)
 		push_from_a(stack_a, stack_b, arr, block);
-	// }
-	while (block->pivot_i > 2)
-		push_from_b(stack_a, stack_b, arr, block);
+	
+	// block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size - 1);
+	// while (block->pivot_i > 2)
+	// 	push_from_b(stack_a, stack_b, arr, block);
+	// if (block->curr_size_b)
+	// 	push_from_b_last(stack_a, stack_b, arr, block);
 	// printf("dick\n");
 }
 
