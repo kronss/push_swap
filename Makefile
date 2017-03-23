@@ -18,7 +18,7 @@ NAME_1 = push_swap
 
 NAME_2 = checker
  
-TEST = -v -f -c    10 9 8 7 6 5 4 3 2 1 0 -1
+TEST = -v -f -c 9 18 1 16 5 4 3 2 17 44
 
 OBJECT =  	list_push_back.o \
 			ps_error.o \

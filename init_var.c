@@ -20,5 +20,5 @@ void		init_var(t_block *b, t_stack **s_a, t_stack **s_b)
 	b->max_size = 1;	
 	*s_a = NULL;
 	*s_b = NULL;
-	b->pivot_i = 1;
+	b->pivot_i = 0;
 }
