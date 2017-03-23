@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   frst_sort.c                                        :+:      :+:    :+:   */
+/*   frst_sort_3_elem.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -35,9 +35,9 @@ char		check_rr_or_rrr(t_stack *stack_b, t_block *block)
 	return (top < bottom) ? (1) : (0);
 }
 
-void		frst_sort(t_stack **stack_a, t_stack **stack_b, t_block *block)
+void		frst_sort_3_elem(t_stack **stack_a, t_stack **stack_b, t_block *block)
 {
-	ft_printf("======FRST================================================FRST==============\n");
+	
 	print_stacks(*stack_a, *stack_b); //bonus
 	if ((*stack_a)->data < (*stack_a)->next->data) // a < b ====================
 	{
@@ -82,6 +82,7 @@ void		frst_sort(t_stack **stack_a, t_stack **stack_b, t_block *block)
 			check_rr_or_rrr(*stack_b, block) ? make_rrr(stack_a, stack_b, 1) : make_rra(stack_a, 1);			
 		}
 	}
+	// block->size -= 3;
 	print_stacks(*stack_a, *stack_b); //bonus	
 }
 

@@ -37,8 +37,8 @@ void				pre_validate(t_stack *stack_a, t_block *block)
 {
 	if (stack_a)
 	{
-		validate(stack_a, &block->size);
-		block->curr_size_a = block->size;
+		validate(stack_a, &block->max_size);
+		block->curr_size_a = block->max_size;
 		block->curr_size_b = 0;
 	}
 	else

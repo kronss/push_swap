@@ -46,9 +46,10 @@ typedef struct			s_block
 	char				debug;
 	char				color;
 	char				file;
-	int					size;
+	int					max_size;
 	int 				curr_size_a;
 	int 				curr_size_b;
+	int 				pivot_i;
 
 	// struct	s_stack		*stack_a;
 	// struct	s_stack		*stack_b;
@@ -70,7 +71,8 @@ void				init_var(t_block *b, t_stack **s_a, t_stack **s_b);
 /* === push_swap ================== */
 
 
-void				frst_sort(t_stack **stack_a, t_stack **stack_b, t_block *block);
+void				frst_sort_3_elem(t_stack **stack_a, t_stack **stack_b, t_block *block);
+char				check_ss(t_stack *stack_b, t_block *block);
 
 /*==== checker =====================*/
 
