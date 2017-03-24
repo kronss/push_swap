@@ -69,16 +69,18 @@ void				pre_validate(t_stack *stack_a, t_block *block);
 int					read_flags(t_block *block, char **av, int ar);
 void				init_var(t_block *b, t_stack **s_a, t_stack **s_b);
 
+
 /* === push_swap ================== */
-
-
 void				frst_sort_3_elem(t_stack **stack_a, t_stack **stack_b, t_block *block);
 void				next_sort_3_elem(t_stack **stack_a, t_stack **stack_b, t_block *block);
 char				check_ss(t_stack *stack_b, t_block *block);
 char				check_rr_or_rrr(t_stack *stack_b, t_block *block);
+char				check_stack_a(t_stack *stack_a);
+char		check_stack_b(t_stack *stack_b);
+void		ultimate(t_stack **stack_a, t_stack **stack_b, t_block *block);
+
 
 /*==== checker =====================*/
-
 void				reading_commands(t_stack **stack_a, t_stack **stack_b);
 
 /*=== operartion and dispalay =======*/

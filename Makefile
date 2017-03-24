@@ -32,10 +32,12 @@ OBJECT =  	list_push_back.o \
 			init_var.o \
 			read_flags.o
 
+
 OBJECT_1 = 	$(OBJECT) \
 			push_swap.o \
 			frst_sort_3_elem.o \
-			next_sort_3_elem.o
+			next_sort_3_elem.o \
+			check_stack_a.o
 
 
 OBJECT_2 = 	$(OBJECT) \
