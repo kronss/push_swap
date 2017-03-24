@@ -97,17 +97,19 @@ char			find_rem(t_stack *stack_a, int *arr, t_block *block)
 
 void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block)
 {
-	block->pivot_i = find_pivot(arr, block->pivot_i, block->curr_size_a - 1);
-	// print_stacks(*stack_a, *stack_b); sleep(1);
+	block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size);
+	print_stacks(*stack_a, *stack_b); //sleep(1);
 	// 	for (int j = 0; j < block->max_size; ++j)
 	// {
 	// 	printf("arr[%u] == [%u]\n", j, (arr[j]));
 	// }
-	// sleep(5);
 	// printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]); sleep(5);
+	// sleep(5);
+	
 	while (find_rem(*stack_a, arr, block))   // check (elem);
 	{
-		
+		if (check_stack_a(*stack_a))
+			return ;
 		printf("arr[%d] > data[%d]\n", arr[block->pivot_i], (*stack_a)->data);
 		printf("pivot_ind %d\n", block->pivot_i);
 		if (arr[block->pivot_i] > (*stack_a)->data)
@@ -125,11 +127,11 @@ void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *bloc
 		make_ra(stack_a, 1); // find_way;
 		print_stacks(*stack_a, *stack_b);
 		}
-		if (check_ss(*stack_b, block))// ? make_ss(stack_a, stack_b, 1) : 0;  //DELL??????
-		{
-			make_ss(stack_a, stack_b, 1);
-			print_stacks(*stack_a, *stack_b);
-		}
+		// if ( check_ss(*stack_b, block))// ? make_ss(stack_a, stack_b, 1) : 0;  //DELL??????
+		// {
+		// 	make_ss(stack_a, stack_b, 1);
+		// 	print_stacks(*stack_a, *stack_b);
+		// }
 
 			// sleep (1);
 	}
@@ -199,10 +201,12 @@ void			begin_sorting(t_stack **stack_a, t_stack **stack_b, t_block *block)
 	// }
 	// if (block->curr_size_a > 3)
 	// {
+	// block->pivot_i = block->curr_size_a - 1;
 	while (!check_stack_a(*stack_a))
 		push_from_a(stack_a, stack_b, arr, block);
 	printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]);
-	block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size - 1);
+	
+	//block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size - 1);
 	while (block->pivot_i > 2)
 	{
 		if (check_stack_a(*stack_a) && (check_stack_b(*stack_b)))

@@ -17,6 +17,9 @@ char		check_stack_a(t_stack *stack_a)
 	int		tmp;
 
 	tmp = stack_a->data;
+	if (!stack_a->next)
+		return (1);
+	stack_a =stack_a->next;
 	if (stack_a)
 	{
 		while (stack_a)
