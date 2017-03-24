@@ -18,6 +18,7 @@ static t_stack		*create_elem(int a)
 	if (!(new = malloc(sizeof(t_stack *))))
 		return (NULL);
 	new->data = a;
+	new->p = 0;
 	new->next = NULL;
 	return (new);
 }

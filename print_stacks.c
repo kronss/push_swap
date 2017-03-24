@@ -24,7 +24,7 @@ void					print_stacks(t_stack *stack_a, t_stack *stack_b)
 	while (stack_a || stack_b)
 	{
 		stack_a ? ft_printf("% -11d|", stack_a->data) : ft_printf("%12c", '|');
-		stack_b ? ft_printf("% 11d\n", stack_b->data) : ft_printf("\n");
+		stack_b ? ft_printf("% 11d", stack_b->data) &&  ft_printf("    p == %d\n", stack_b->p): ft_printf("\n");
 		stack_a ? stack_a = stack_a->next : 0;
 		stack_b ? stack_b = stack_b->next : 0;
 	}

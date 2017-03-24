@@ -17,8 +17,10 @@ GCC = gcc
 NAME_1 = push_swap
 
 NAME_2 = checker
- 
-TEST = -v -f -c 9 18 887555555 1 2 3 4 98  55445  111 87878 42 0 898 78 9787 98788 979 89879 8798
+
+# BONUS_TEST = -v -f -c
+
+TEST = $(BONUS_TEST) 9 18 89 654 8 6464654 54654 8787 54 87 879 545454 444 123 2331 2121 215 77 555 66 
 
 OBJECT =  	list_push_back.o \
 			ps_error.o \

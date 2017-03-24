@@ -51,37 +51,7 @@ void			sort_2_elem(t_stack **stack_a, t_stack **stack_b, t_block *block)
 	// 	ft_printf("===== 1 2 ==============================\n");
 }
 
-void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block)
-{
-	// print_stacks(*stack_a, *stack_b); sleep(1);
-	// 	for (int j = 0; j < block->max_size; ++j)
-	// {
-	// 	printf("arr[%u] == [%u]\n", j, (arr[j]));
-	// }
-	// sleep(5);
-	// printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]); sleep(5);
-	while (block->curr_size_a > block->max_size - block->pivot_i)
-	{
-		print_stacks(*stack_a, *stack_b);
-		printf("arr[%d] > data[%d]\n", arr[block->pivot_i], (*stack_a)->data);
-		printf("pivot_ind %d\n", block->pivot_i);
-		if (arr[block->pivot_i] > (*stack_a)->data)
-		{
-			make_pb(stack_a, stack_b, 1);
-			(block->curr_size_a)--;
-			(block->curr_size_b)++;
-		}
-		else
-			make_ra(stack_a, 1);
-			sleep (1);
-	}
-	block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size);
-	// sleep(100);
-	// ft_printf("======FRST================================================FRST==============\n");
-	block->curr_size_a == 3 ? frst_sort_3_elem(stack_a, stack_b, block) : 0;
-	block->curr_size_a == 2 ? sort_2_elem(stack_a, stack_b, block) : 0;
-	block->curr_size_a == 1 ? ft_printf(" ===== 1 ================================\n") : 0;
-}
+
 
 // void			push_from_b(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block)
 // {
@@ -151,7 +121,44 @@ void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *bloc
 
 // }
 
+void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block)
+{
+	block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size - 1);
+	// print_stacks(*stack_a, *stack_b); sleep(1);
+	// 	for (int j = 0; j < block->max_size; ++j)
+	// {
+	// 	printf("arr[%u] == [%u]\n", j, (arr[j]));
+	// }
+	// sleep(5);
+	// printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]); sleep(5);
+	while (block->curr_size_a > block->max_size - block->pivot_i)
+	{
+		print_stacks(*stack_a, *stack_b);
+		printf("arr[%d] > data[%d]\n", arr[block->pivot_i], (*stack_a)->data);
+		printf("pivot_ind %d\n", block->pivot_i);
+		if (arr[block->pivot_i] > (*stack_a)->data)
+		{
+			(*stack_a)->p = block->pivot_i;
+			printf("============%d\n", (*stack_a)->p);
+			make_pb(stack_a, stack_b, 1);
 
+			(block->curr_size_a)--;
+			(block->curr_size_b)++;
+			// if (block->curr_size_b % 2 == 0)
+		}
+		else
+			make_ra(stack_a, 1);
+		check_ss(*stack_b, block) ? make_ss(stack_a, stack_b, 1) : 0;  //DELL??????
+
+			sleep (1);
+	}
+	block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size);
+	// sleep(100);
+	// ft_printf("======FRST================================================FRST==============\n");
+	block->curr_size_a == 3 ? frst_sort_3_elem(stack_a, stack_b, block) : 0;
+	block->curr_size_a == 2 ? sort_2_elem(stack_a, stack_b, block) : 0;
+	block->curr_size_a == 1 ? ft_printf(" ===== 1 ================================\n") : 0;
+}
 
 void			begin_sorting(t_stack **stack_a, t_stack **stack_b, t_block *block)
 {
@@ -159,7 +166,7 @@ void			begin_sorting(t_stack **stack_a, t_stack **stack_b, t_block *block)
 
 	push_data_ta_arr(*stack_a, arr);
 	q_sort(arr, 0, block->max_size - 1);
-	block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size - 1);
+	// block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size - 1);
 	// for (int j = 0; j < block->max_size; ++j)
 	// {
 	// 	printf("arr[%d] == [%d]\n", j, (arr[j]));
@@ -175,7 +182,9 @@ void			begin_sorting(t_stack **stack_a, t_stack **stack_b, t_block *block)
 	// {
 	while (block->curr_size_a > 3)
 		push_from_a(stack_a, stack_b, arr, block);
-	
+	printf("pivot\nindex %d\nvalue %d\n", block->pivot_i, arr[block->pivot_i]);
+
+
 	// block->pivot_i = find_pivot(arr, block->pivot_i, block->max_size - 1);
 	// while (block->pivot_i > 2)
 	// 	push_from_b(stack_a, stack_b, arr, block);
