@@ -18,15 +18,15 @@ void					print_stacks(t_stack *stack_a, t_stack *stack_b)
 	// ft_printf("##_b %p\n", stack_b);
 
 
-	ft_printf("–––––––––––––––––––––––\n");
-	ft_printf("   stack A | stack B   \n");
-	ft_printf("–––––––––––––––––––––––\n");
+	ft_printf("       –––––––––––––––––––––––\n");
+	ft_printf("          stack A | stack B   \n");
+	ft_printf("       –––––––––––––––––––––––\n");
 	while (stack_a || stack_b)
 	{
-		stack_a ? ft_printf("% -11d|", stack_a->data) : ft_printf("%12c", '|');
+		stack_a ? ft_printf("p=%2d   ", stack_a->p) && ft_printf("% -11d|", stack_a->data) : ft_printf("%19c", '|');
 		stack_b ? ft_printf("% 11d", stack_b->data) &&  ft_printf("    p == %d\n", stack_b->p): ft_printf("\n");
 		stack_a ? stack_a = stack_a->next : 0;
 		stack_b ? stack_b = stack_b->next : 0;
 	}
-	ft_printf("–––––––––––––––––––––––\n");
+	ft_printf("       –––––––––––––––––––––––\n");
 }

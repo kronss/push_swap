@@ -35,12 +35,21 @@ void				validate(t_stack *stack_a, int *size)
 
 void				pre_validate(t_stack *stack_a, t_block *block)
 {
+	t_stack *tmp;
+
 	if (stack_a)
 	{
 		validate(stack_a, &block->max_size);
 		block->curr_size_a = block->max_size;
+		block->pivot_i =  0;
 		block->curr_size_b = 0;
 	}
 	else
 		exit(0);
+	tmp = stack_a;
+	while (tmp)
+	{
+		tmp->p = block->max_size - 1;
+		tmp = tmp->next;
+	}
 }

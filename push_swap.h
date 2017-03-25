@@ -78,7 +78,11 @@ char				check_rr_or_rrr(t_stack *stack_b, t_block *block);
 char				check_stack_a(t_stack *stack_a);
 char		check_stack_b(t_stack *stack_b);
 void		ultimate(t_stack **stack_a, t_stack **stack_b, t_block *block);
-
+char		check_ab_ss(t_stack *stack_a, t_stack *stack_b, t_block *block);
+void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block);
+void			push_from_b(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block);
+int 			find_pivot(int *arr, int begin, int max_size);
+void			sort_2_elem(t_stack **stack_a, t_stack **stack_b, t_block *block);
 
 /*==== checker =====================*/
 void				reading_commands(t_stack **stack_a, t_stack **stack_b);

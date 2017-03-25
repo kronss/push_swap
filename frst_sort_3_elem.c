@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+char		check_ab_ss(t_stack *stack_a, t_stack *stack_b, t_block *block)
+{
+	if (!(block->curr_size_b > 1 && block->curr_size_a > 1))
+		return (0);
+	return (stack_b->data < stack_b->next->data &&
+			 stack_a->data > stack_a->next->data) ? (1) : (0);
+}
+
+
 char		check_ss(t_stack *stack_b, t_block *block)
 {
 	if (!(block->curr_size_b > 1))
@@ -19,6 +28,16 @@ char		check_ss(t_stack *stack_b, t_block *block)
 	return (stack_b->data < stack_b->next->data) ? (1) : (0);
 }
 
+void			sort_2_elem(t_stack **stack_a, t_stack **stack_b, t_block *block)
+{
+	if ((*stack_a)->data > (*stack_a)->next->data)
+	{
+		// ft_printf("===== 2 1 ==============================\n");
+		check_ss(*stack_b, block) ? make_ss(stack_a, stack_b, 1) : make_sa(stack_a, 1);
+	}
+	// else
+	// 	ft_printf("===== 1 2 ==============================\n");
+}
 
 char		check_rr_or_rrr(t_stack *stack_b, t_block *block)
 {
