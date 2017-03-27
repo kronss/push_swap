@@ -43,6 +43,7 @@ void				pre_validate(t_stack *stack_a, t_block *block)
 		block->curr_size_a = block->max_size;
 		block->pivot_i =  0;
 		block->curr_size_b = 0;
+		block->rra = 0;
 	}
 	else
 		exit(0);

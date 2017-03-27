@@ -12,23 +12,22 @@
 
 #include "push_swap.h"
 
-void						make_pb(t_stack **stack_a, t_stack **stack_b, char c)
+void						make_pb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack *tmp;
 
 	if (*stack_a)
 	{
 		tmp = *stack_a;
-
 		*stack_a = (*stack_a)->next;
-
 		tmp->next = (*stack_b);
 		*stack_b = tmp;
 	}
-	c == 1 ? ft_printf("pb\n") : 0;
+	c == 1 ? ft_printf("pb\n") && operation_push_back(block->oper, "pb") : 0; //to chain
+	block->debug == 1 ? ft_printf("pb\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
 
-void						make_pa(t_stack **stack_a, t_stack **stack_b, char c)
+void						make_pa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack *tmp;
 
@@ -41,44 +40,65 @@ void						make_pa(t_stack **stack_a, t_stack **stack_b, char c)
 		tmp->next = (*stack_a);
 		*stack_a = tmp;
 	}
-	c == 1 ? ft_printf("pa\n") : 0;
+	c == 1 ? ft_printf("pa\n") && operation_push_back(block->oper, "pa") : 0;
+	block->debug == 1 ? ft_printf("pa\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
 
-void			make_sa(t_stack **head, char c)
+void			make_sa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack		*frst;
 	t_stack		*scnd;
 
-	frst = (*head);
+	frst = (*stack_a) ;
 	if (frst && frst->next)
 	{
 		scnd = frst->next;
 		frst->next = scnd->next;
 		scnd->next = frst;
-		(*head) = scnd;
+		(*stack_a)  = scnd;
 	}
-	c == 1 ? ft_printf("sa\n") : 0;
+	c == 1 ? ft_printf("sa\n") && operation_push_back(block->oper, "sa") : 0;
+	block->debug == 1 ? ft_printf("sa\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
 
-void			make_sb(t_stack **head, char c)
+void			make_sb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack		*frst;
 	t_stack		*scnd;
 
-	frst = (*head);
+	frst = (*stack_b);
 	if (frst && frst->next)
 	{
 		scnd = frst->next;
 		frst->next = scnd->next;
 		scnd->next = frst;
-		(*head) = scnd;
+		(*stack_b) = scnd;
 	}
-	c == 1 ?  ft_printf("sb\n") : 0;
+	c == 1 ? ft_printf("sb\n") && operation_push_back(block->oper, "sb") : 0;
+	block->debug == 1 ? ft_printf("sb\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
 
-void			make_ss(t_stack **stack_a, t_stack **stack_b, char c)
+void			make_ss(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
-	make_sa(stack_a, 0);
-	make_sb(stack_b, 0);
-	c == 1 ? ft_printf("ss\n") : 0;
+	if (block->debug == 1)
+	{
+		block->debug == 0;	
+		make_sa(stack_a, stack_b, 0, block);
+		make_sb(stack_a, stack_b, 0, block);
+		block->debug == 1;
+	}
+	else
+	{
+		make_sa(stack_a, stack_b, 0, block);
+		make_sb(stack_a, stack_b, 0, block);
+	}
+	c == 1 ? ft_printf("ss\n") && operation_push_back(block->oper, "ss"): 0;
+	block->debug == 1 ? ft_printf("ss\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
+
+
+
+
+
+
+

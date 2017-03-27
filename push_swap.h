@@ -42,6 +42,13 @@ typedef struct			s_stack
 	struct	s_stack		*next;
 }						t_stack;
 
+typedef struct			s_oper
+{
+	int					data;
+	struct	s_oper		*next;
+}						t_oper;
+
+
 typedef struct			s_block
 {
 	char				debug;
@@ -51,9 +58,10 @@ typedef struct			s_block
 	int 				curr_size_a;
 	int 				curr_size_b;
 	int 				pivot_i;
+	int 				rra;
+	// int   				pw;
+	t_oper				*oper; 
 
-	// struct	s_stack		*stack_a;
-	// struct	s_stack		*stack_b;
 }						t_block;
 
 
@@ -64,42 +72,50 @@ typedef struct			s_block
 void				list_push_back(t_stack **begin_list, long a, char *str);
 // void				list_push_front(t_stack **begin_list, int a);
 void				ps_error(char i);
-void				print_stacks(t_stack *tmp, t_stack *stack_b);
+
 void				pre_validate(t_stack *stack_a, t_block *block);
 int					read_flags(t_block *block, char **av, int ar);
 void				init_var(t_block *b, t_stack **s_a, t_stack **s_b);
 
 
 /* === push_swap ================== */
-void				frst_sort_3_elem(t_stack **stack_a, t_stack **stack_b, t_block *block);
-void				next_sort_3_elem(t_stack **stack_a, t_stack **stack_b, t_block *block);
+void				frst_sort_3_elem_a(t_stack **stack_a, t_stack **stack_b, t_block *block);
+void				next_sort_3_elem_a(t_stack **stack_a, t_stack **stack_b, t_block *block);
+void				last_sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block);
+void				next_sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block);
+
 char				check_ss(t_stack *stack_b, t_block *block);
 char				check_rr_or_rrr(t_stack *stack_b, t_block *block);
 char				check_stack_a(t_stack *stack_a);
 char		check_stack_b(t_stack *stack_b);
 void		ultimate(t_stack **stack_a, t_stack **stack_b, t_block *block);
-char		check_ab_ss(t_stack *stack_a, t_stack *stack_b, t_block *block);
+
 void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block);
 void			push_from_b(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block);
-int 			find_pivot(int *arr, int begin, int max_size);
-void			sort_2_elem(t_stack **stack_a, t_stack **stack_b, t_block *block);
+int 			find_pivot(t_stack *stack_a, int max_size);
+void			sort_2_elem_a(t_stack **stack_a, t_stack **stack_b, t_block *block);
+void			sort_2_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block);
+void			recursion_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int max_size);
+void			recursion_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int max_size);
+
+int operation_push_back(t_oper *oper, char *str);
 
 /*==== checker =====================*/
-void				reading_commands(t_stack **stack_a, t_stack **stack_b);
+void				reading_commands(t_stack **stack_a, t_stack **stack_b, t_block *block);
 
 /*=== operartion and dispalay =======*/
-void				make_sa(t_stack **head, char c);				//	1
-void				make_sb(t_stack **head, char c);				//	2
-void				make_ss(t_stack **stack_a, t_stack **stack_b, char c);	//	3
-void				make_pa(t_stack **stack_a, t_stack **stack_b, char c);	//	4
-void				make_pb(t_stack **stack_a, t_stack **stack_b, char c);	//	5
-void				make_ra(t_stack **head, char c);				//	6
-void				make_rb(t_stack **head, char c);				//	7
-void				make_rr(t_stack **stack_a, t_stack **stack_b, char c);	//	8
-void				make_rra(t_stack **head, char c);						//	9
-void				make_rrb(t_stack **head, char c);						//	10
-void				make_rrr(t_stack **stack_a, t_stack **stack_b, char c);	//	11
-
+void		make_sa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	1
+void		make_sb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	2
+void		make_ss(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	3
+void		make_pa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	4
+void		make_pb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	5
+void		make_ra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	6
+void		make_rb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	7
+void		make_rr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	8
+void		make_rra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	9
+void		make_rrb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	10
+void		make_rrr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block);	//	11
+int			print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 
 #endif

@@ -20,7 +20,7 @@ NAME_2 = checker
 
 # BONUS_TEST = -v -f -c
 
-TEST = $(BONUS_TEST)  12 13 4 5 7 9 6 3 78 123
+TEST = $(BONUS_TEST) -v 11 40 49 6 43 21 48 1 22 5 46 7 546 54 545 7887
 
 OBJECT =  	list_push_back.o \
 			ps_error.o \
@@ -35,11 +35,12 @@ OBJECT =  	list_push_back.o \
 
 OBJECT_1 = 	$(OBJECT) \
 			push_swap.o \
-			frst_sort_3_elem.o \
-			next_sort_3_elem.o \
+			frst_sort_3_elem_a.o \
+			next_sort_3_elem_a.o \
+			next_sort_3_elem_b.o \
+			last_sort_3_elem_b.o \
 			check_stack_a.o \
-			push_from_a.o \
-			push_from_b.o
+			operation_push_back.o \
 
 
 
@@ -86,7 +87,8 @@ c: all
 
 bug:
 	# gcc -g $(F) -o $(NAME_2) checker.c reading_commands.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c $(INCL)
-	gcc -g $(F) -o $(NAME_1) check_stack_a.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c init_var.c read_flags.c push_swap.c  frst_sort_3_elem.c next_sort_3_elem.c $(INCL)
+	gcc -g $(F) -o $(NAME_1) check_stack_a.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
+	init_var.c read_flags.c push_swap.c  frst_sort_3_elem_a.c next_sort_3_elem_a.c next_sort_3_elem_b.c last_sort_3_elem_b.c $(INCL)
 
 debug: bug
 	lldb -- $(NAME_1) $(TEST)

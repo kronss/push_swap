@@ -52,9 +52,10 @@ int				main(int ar, char **av)
 		i++;
 	}
 	pre_validate(stack_a, &block);
+	
 	/*========================================*/
-	print_stacks(stack_a, stack_b); //bonus
-	reading_commands(&stack_a, &stack_b);
+
+	reading_commands(&stack_a, &stack_b, &block);
 	checker(stack_a, stack_b);
 	return (0);
 }

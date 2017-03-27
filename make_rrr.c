@@ -12,45 +12,58 @@
 
 #include "push_swap.h"
 
-void						make_rra(t_stack **head, char c)
+void						make_rra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack					*tmp;
 	t_stack					*will_be_head;
 
-	if ((*head) && (*head)->next)
+	if ((*stack_a) && (*stack_a)->next)
 	{
-		tmp = *head;
+		tmp = *stack_a;
 		while (tmp->next->next)
 			tmp = tmp->next;
 		will_be_head = tmp->next;
-		will_be_head->next = (*head);
-		(*head) = will_be_head;
+		will_be_head->next = (*stack_a);
+		(*stack_a) = will_be_head;
 		tmp->next = NULL;
 	}
-	c == 1 ? ft_printf("rra\n") : 0;
+	c == 1 ? ft_printf("rra\n") && operation_push_back(block->oper, "rra") : 0;
+	block->debug == 1 ? ft_printf("rra\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
 
-void						make_rrb(t_stack **head, char c)
+void						make_rrb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack					*tmp;
 	t_stack					*will_be_head;
 
-	if ((*head) && (*head)->next)
+	if ((*stack_b) && (*stack_b)->next)
 	{
-		tmp = *head;
+		tmp = *stack_b;
 		while (tmp->next->next)
 			tmp = tmp->next;
 		will_be_head = tmp->next;
-		will_be_head->next = (*head);
-		(*head) = will_be_head;
+		will_be_head->next = (*stack_b);
+		(*stack_b) = will_be_head;
 		tmp->next = NULL;
 	}
-	c == 1 ? ft_printf("rrb\n") : 0;
+	c == 1 ? ft_printf("rrb\n") && operation_push_back(block->oper, "rrb") : 0;
+	block->debug == 1 ? ft_printf("rrb\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
 
-void						make_rrr(t_stack **stack_a, t_stack **stack_b, char c)
+void						make_rrr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
-	make_rra(stack_a, 0);
-	make_rrb(stack_b, 0);
-	c == 1 ? ft_printf("rrr\n") : 0;
+	if (block->debug == 1)
+	{
+		block->debug = 0;
+		make_rra(stack_a, stack_b, 0, 0);
+		make_rrb(stack_a, stack_b, 0, 0);
+		block->debug = 1;
+	}
+	else
+	{
+		make_rra(stack_a, stack_b, 0, 0);
+		make_rrb(stack_a, stack_b, 0, 0);
+	}
+	c == 1 ? ft_printf("rrr\n") && operation_push_back(block->oper, "rrr") : 0;
+	block->debug == 1 ? ft_printf("rrr\n") && print_stacks(*stack_a, *stack_b) : 0;
 }

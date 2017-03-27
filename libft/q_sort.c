@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+**	q_sort(array, 0, max - 1)
+*/
+
 #include "libft.h"
 
 void		q_sort(int* s_arr, int first, int last)

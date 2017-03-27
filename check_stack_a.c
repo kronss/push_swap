@@ -40,22 +40,23 @@ char		check_stack_a(t_stack *stack_a)
 
 char		check_stack_b(t_stack *stack_b)  // empty?
 {
-	// int		tmp;
+	int		tmp;
 
 	if (stack_b)
 	{
+		// return (1);
+		tmp = stack_b->data;
+		while (stack_b)
+		{
+			// ft_printf("cheker %d\n", tmp);
+			if (tmp < stack_b->data)
+			{
+				return (0) ;
+			}
+			tmp = stack_b->data;
+			stack_b = stack_b->next;
+		}
 		return (1);
-		// tmp = stack_b->data;
-		// while (stack_b)
-		// {
-		// 	// ft_printf("cheker %d\n", tmp);
-		// 	if (tmp < stack_b->data)
-		// 	{
-		// 		return (0) ;
-		// 	}
-		// 	tmp = stack_b->data;
-		// 	stack_b = stack_b->next;
-		// }
 	}
 	return (0);
 }
