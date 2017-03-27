@@ -41,7 +41,8 @@ OBJECT_1 = 	$(OBJECT) \
 			next_sort_3_elem_a.o \
 			next_sort_3_elem_b.o \
 			last_sort_3_elem_b.o \
-			add_function.o
+			add_function.o \
+			optimization.o
 
 OBJECT_2 = 	$(OBJECT) \
 			checker.o \
@@ -80,15 +81,14 @@ r: all
 
 c: all
 	./$(NAME_2) $(TEST)
-# gcc -g -o push_swap list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c init_var.c read_flags.c push_swap.c
 
+# gcc  -o checker list_push_back.o ps_error.o print_stacks.o make_ss.o make_rr.o make_rrr.o pre_validate.o init_var.o read_flags.o operation_push_back.o  checker.o reading_commands.o
 bug:
-	# gcc -g $(F) -o $(NAME_2) checker.c reading_commands.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c $(INCL)
-	gcc -g $(F) -o $(NAME_1) check_stack_a.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
-	init_var.c read_flags.c push_swap.c  frst_sort_3_elem_a.c next_sort_3_elem_a.c next_sort_3_elem_b.c last_sort_3_elem_b.c $(INCL)
+	gcc -g $(F) -o $(NAME_2) list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
+	init_var.c read_flags.c operation_push_back.c checker.c reading_commands.c $(INCL)
 
 debug: bug
-	lldb -- $(NAME_1) $(TEST)
+	lldb -- $(NAME_2) $(TEST)
 
 %.o: ./%.c
 	$(GCC) $(F) -o $@ -c $< -I ./

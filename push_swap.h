@@ -95,7 +95,7 @@ char			find_rem_a(t_stack *stack_a, int pivot);
 char			find_rem_b(t_stack *stack_b, int pivot);
 int				find_pivot(t_stack *stack_a, int max_size);
 int 			linked_list_len(t_stack *tmp);
-
+int				optimization(t_block *block, t_oper **oper);
 void 			operation_push_back(t_oper *oper, char *str);
 /*==== checker =====================*/
 void				reading_commands(t_stack **stack_a, t_stack **stack_b, t_block *block);

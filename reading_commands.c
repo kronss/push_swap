@@ -12,48 +12,33 @@
 
 #include "push_swap.h"
 
-static	int	choose_operation(char *line)
+static	void	choose_operation(t_stack **stack_a, t_stack **stack_b, t_block *block, char *line)
 {
+	ft_printf("block->debug == %d\nblock->color == %d\nblock->file == %d\n", block->debug, block->color, block->file);
 	if (!ft_strcmp(line, "sa"))
-		return (1);
+		return (make_sa(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "sb"))
-		return (2);
+		return (make_sb(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "ss"))
-		return (3);
+		return (make_ss(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "pa"))
-		return (4);
+		return (make_pa(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "pb"))
-		return (5);
+		return (make_pb(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "ra"))
-		return (6);
+		return (make_ra(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "rb"))
-		return (7);
+		return (make_rb(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "rr"))
-		return (8);
+		return (make_rr(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "rra"))
-		return (9);
+		return (make_rra(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "rrb"))
-		return (10);
+		return (make_rrb(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "rrr"))
-		return (11);
-	// else if (!ft_strcmp(line, "")) //bonus
-	// 	return (0);
-	return (-1);
-}
-
-static	void	make_operation(int cmd, t_stack **stack_a, t_stack **stack_b, t_block *block)
-{
-	cmd == 1 ? make_sa(stack_a, stack_b, 0, block) : 0;
-	cmd == 2 ? make_sb(stack_a, stack_b, 0, block) : 0;
-	cmd == 3 ? make_ss(stack_a, stack_b, 0, block) : 0;
-	cmd == 4 ? make_pa(stack_a, stack_b, 0, block) : 0;
-	cmd == 5 ? make_pb(stack_a, stack_b, 0, block) : 0;
-	cmd == 6 ? make_ra(stack_a, stack_b, 0, block) : 0;
-	cmd == 7 ? make_rb(stack_a, stack_b, 0, block) : 0;
-	cmd == 8 ? make_rr(stack_a, stack_b, 0, block) : 0;
-	cmd == 9 ? make_rra(stack_a, stack_b, 0, block) : 0;
-	cmd == 10 ? make_rrb(stack_a, stack_b, 0, block) : 0;
-	cmd == 11 ? make_rrr(stack_a, stack_b, 0, block) : 0;
+		return (make_rrr(stack_a, stack_b, 0, block));
+	else
+		return (ps_error(4));
 }
 
 void			reading_commands(t_stack **stack_a, t_stack **stack_b, t_block *block)
@@ -62,14 +47,6 @@ void			reading_commands(t_stack **stack_a, t_stack **stack_b, t_block *block)
 	int 		cmd;
 
 	while ((get_next_line(STDIN, &line)) > 0)
-	{
-		cmd = choose_operation(line);
-		if (cmd > 0)
-		{
-			make_operation(cmd, stack_a, stack_b, block);
-		}
-		else
-			ps_error(4);
-	}
+		choose_operation(stack_a, stack_b, block, line);
 	ft_strdel(&line);
 }

@@ -16,7 +16,7 @@ char			find_rem_a(t_stack *stack_a, int pivot)
 {
 	while (stack_a)
 	{
-		if (pivot >= stack_a->data)
+		if (pivot > stack_a->data)
 			return (1);
 		stack_a = stack_a->next;
 	}
@@ -27,7 +27,7 @@ char			find_rem_b(t_stack *stack_b, int pivot)
 {
 	while (stack_b)
 	{
-		if (pivot < stack_b->data)
+		if (pivot <= stack_b->data)
 			return (1);
 		stack_b = stack_b->next;
 	}

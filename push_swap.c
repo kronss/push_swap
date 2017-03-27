@@ -60,7 +60,7 @@ void			recursion_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int max
 	block->pivot_i = find_pivot(*stack_a, max_size);
 	while (find_rem_a(*stack_a, block->pivot_i))
 	{
-		if ((*stack_a)->data <= block->pivot_i && ++push_b)
+		if ((*stack_a)->data < block->pivot_i && ++push_b)
 			make_pb(stack_a, stack_b, 1, block);
 		else
 		{
@@ -90,7 +90,7 @@ void 			recursion_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int pu
 	block->pivot_i = find_pivot(*stack_b, push_b);
 	while (find_rem_b(*stack_b, block->pivot_i))
 	{
-		if ((*stack_b)->data > block->pivot_i && ++push_a)
+		if ((*stack_b)->data >= block->pivot_i && ++push_a)
 			make_pa(stack_a, stack_b, 1, block);
 		else
 		{
@@ -126,5 +126,7 @@ int								main(int ar, char **av)
 	block.max_size > 1 ? recursion_a(&stack_a, &stack_b, &block, block.max_size) : 0;
 	block.debug ? print_stacks(stack_a, stack_b) : 0; //bonus
 	// print_stacks(stack_a, stack_b);
+	while (optimization(&block, &(block.oper)))
+		;
 	return (0);
 }

@@ -25,7 +25,7 @@ void						make_pb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	if (c == 1)
 	{
-		ft_printf("pb\n");
+		block->debug == 1 ? 0 : ft_printf("pb\n");
 		operation_push_back(block->oper, "pb");
 	}
 	block->debug == 1 ? ft_printf("pb\n") && print_stacks(*stack_a, *stack_b) : 0;
@@ -38,15 +38,13 @@ void						make_pa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	if (*stack_b)
 	{
 		tmp = *stack_b;
-
 		*stack_b = (*stack_b)->next;
-
 		tmp->next = (*stack_a);
 		*stack_a = tmp;
 	}
 	if (c == 1)
 	{
-		ft_printf("pa\n");
+		block->debug == 1 ? 0 : ft_printf("pa\n");
 		operation_push_back(block->oper, "pa");
 	}
 	block->debug == 1 ? ft_printf("pa\n") && print_stacks(*stack_a, *stack_b) : 0;
@@ -67,7 +65,7 @@ void			make_sa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	if (c == 1)
 	{
-		ft_printf("sa\n");
+		block->debug == 1 ? 0 : ft_printf("sa\n");
 		operation_push_back(block->oper, "sa");
 	}
 	block->debug == 1 ? ft_printf("sa\n") && print_stacks(*stack_a, *stack_b) : 0;
@@ -88,7 +86,7 @@ void			make_sb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	if (c == 1)
 	{
-	ft_printf("sb\n");
+	block->debug == 1 ? 0 : ft_printf("sb\n");
 	operation_push_back(block->oper, "sb");
 	}
 	block->debug == 1 ? ft_printf("sb\n") && print_stacks(*stack_a, *stack_b) : 0;
@@ -98,10 +96,10 @@ void			make_ss(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	if (block->debug == 1)
 	{
-		block->debug == 0;	
+		block->debug = 0;	
 		make_sa(stack_a, stack_b, 0, block);
 		make_sb(stack_a, stack_b, 0, block);
-		block->debug == 1;
+		block->debug = 1;
 	}
 	else
 	{
@@ -110,7 +108,7 @@ void			make_ss(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	if (c == 1)
 	{
-	ft_printf("ss\n");
+	block->debug == 1 ? 0 : ft_printf("ss\n");
 	operation_push_back(block->oper, "ss");
 	}
 	block->debug == 1 ? ft_printf("ss\n") && print_stacks(*stack_a, *stack_b) : 0;

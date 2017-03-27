@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_push_back.c                              :+:      :+:    :+:   */
+/*   optimization.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/27 11:34:08 by ochayche          #+#    #+#             */
-/*   Updated: 2017/03/27 11:34:09 by ochayche         ###   ########.fr       */
+/*   Created: 2017/03/27 20:33:45 by ochayche          #+#    #+#             */
+/*   Updated: 2017/03/27 20:33:46 by ochayche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_oper		*create_operation(char *str)
+
+void	compare(t_oper *oper)
 {
-	t_oper			*new;
-	if (!(new = malloc(sizeof(t_oper *))))
-		return (NULL);
-	new->data = str;
-	new->next = NULL;
-	return (new);
+
+
 }
 
-void 				operation_push_back(t_oper *oper, char *str)
+int	optimization(t_block *block, t_oper **oper)
 {
 	t_oper *tmp;
 
-	tmp = oper;
-	if (tmp)
+	tmp = (*oper);
+	printf("==================\n");
+	if (tmp && tmp->next)
 	{
-		while (tmp->next)
+		printf("--\n");
+		while (tmp && tmp->next)
+		{
+			printf("%s\n", tmp->data);
 			tmp = tmp->next;
-		tmp->next = create_operation(str);
+		}
 	}
-	else
-	{
-		oper = create_operation(str);
-	}
+	return (0);
 }
