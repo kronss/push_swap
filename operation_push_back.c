@@ -12,9 +12,29 @@
 
 #include "push_swap.h"
 
-int operation_push_back(t_oper *oper, char *str)
+static t_oper		*create_operation(char *str)
 {
+	t_oper			*new;
+	if (!(new = malloc(sizeof(t_oper *))))
+		return (NULL);
+	new->data = str;
+	new->next = NULL;
 
+}
 
-	return (1);
+void 				operation_push_back(t_oper *oper, char *str)
+{
+	t_oper *tmp;
+
+	tmp = oper;
+	if (tmp)
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = create_operation(str);
+	}
+	else
+	{
+		oper = create_operation(str);
+	}
 }

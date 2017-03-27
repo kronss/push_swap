@@ -20,6 +20,8 @@ NAME_2 = checker
 
 # BONUS_TEST = -v -f -c
 
+INCL = libft/libft.a ft_printf/libftprintf.a
+
 TEST = $(BONUS_TEST) -v 11 40 49 6 43 21 48 1 22 5 46 7 546 54 545 7887
 
 OBJECT =  	list_push_back.o \
@@ -30,8 +32,8 @@ OBJECT =  	list_push_back.o \
 			make_rrr.o \
 			pre_validate.o \
 			init_var.o \
-			read_flags.o
-
+			read_flags.o \
+			operation_push_back.o 
 
 OBJECT_1 = 	$(OBJECT) \
 			push_swap.o \
@@ -39,16 +41,11 @@ OBJECT_1 = 	$(OBJECT) \
 			next_sort_3_elem_a.o \
 			next_sort_3_elem_b.o \
 			last_sort_3_elem_b.o \
-			check_stack_a.o \
-			operation_push_back.o \
-
-
+			add_function.o
 
 OBJECT_2 = 	$(OBJECT) \
 			checker.o \
 			reading_commands.o 
-
-INCL = libft/libft.a ft_printf/libftprintf.a
 
 .PHONY: all clean fclean re bug debug
 

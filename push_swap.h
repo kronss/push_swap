@@ -44,7 +44,7 @@ typedef struct			s_stack
 
 typedef struct			s_oper
 {
-	int					data;
+	char				*data;
 	struct	s_oper		*next;
 }						t_oper;
 
@@ -55,11 +55,8 @@ typedef struct			s_block
 	char				color;
 	char				file;
 	int					max_size;
-	int 				curr_size_a;
-	int 				curr_size_b;
 	int 				pivot_i;
 	int 				rra;
-	// int   				pw;
 	t_oper				*oper; 
 
 }						t_block;
@@ -86,9 +83,6 @@ void				next_sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 
 char				check_ss(t_stack *stack_b, t_block *block);
 char				check_rr_or_rrr(t_stack *stack_b, t_block *block);
-char				check_stack_a(t_stack *stack_a);
-char		check_stack_b(t_stack *stack_b);
-void		ultimate(t_stack **stack_a, t_stack **stack_b, t_block *block);
 
 void			push_from_a(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block);
 void			push_from_b(t_stack **stack_a, t_stack **stack_b, int *arr, t_block *block);
@@ -97,9 +91,12 @@ void			sort_2_elem_a(t_stack **stack_a, t_stack **stack_b, t_block *block);
 void			sort_2_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block);
 void			recursion_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int max_size);
 void			recursion_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int max_size);
+char			find_rem_a(t_stack *stack_a, int pivot);
+char			find_rem_b(t_stack *stack_b, int pivot);
+int				find_pivot(t_stack *stack_a, int max_size);
+int 			linked_list_len(t_stack *tmp);
 
-int operation_push_back(t_oper *oper, char *str);
-
+void 			operation_push_back(t_oper *oper, char *str);
 /*==== checker =====================*/
 void				reading_commands(t_stack **stack_a, t_stack **stack_b, t_block *block);
 
