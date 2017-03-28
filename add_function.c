@@ -12,24 +12,35 @@
 
 #include "push_swap.h"
 
-char			find_rem_a(t_stack *stack_a, int pivot)
+char			find_rem_a(t_stack *stack_a, int pivot, int push_a)
 {
-	while (stack_a)
+	int i;
+
+	i = 0;
+	while (stack_a && (i < push_a))
 	{
-		if (pivot > stack_a->data)
+		// printf("a == %d\n", stack_a->data);
+		if (stack_a->data <= pivot)
 			return (1);
 		stack_a = stack_a->next;
+		i++;
 	}
 	return (0);
 }
 
-char			find_rem_b(t_stack *stack_b, int pivot)
+char			find_rem_b(t_stack *stack_b, int pivot, int push_b)
 {
-	while (stack_b)
+	int i;
+
+	i = 0;
+
+	while (stack_b && (i < push_b))
 	{
-		if (pivot <= stack_b->data)
+			// printf("b == %d\n", stack_b->data);
+		if (stack_b->data > pivot)
 			return (1);
 		stack_b = stack_b->next;
+		i++;
 	}
 	return (0);
 }

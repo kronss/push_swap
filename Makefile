@@ -22,7 +22,7 @@ NAME_2 = checker
 
 INCL = libft/libft.a ft_printf/libftprintf.a
 
-TEST = $(BONUS_TEST) 2 1 3 7 11 56 98 6 8 5
+TEST = $(BONUS_TEST) 315 813 911 403 244 438 658 908 980 259 436 733 475 695 246 433 814 32 351 612 521 272 192 894 956 683 445 584 370 93 66 825 774 917 787 744 250 80 231 901 866 919 384 253 798 551 807 440 791 130 609 492 230 616 864 608 881 350 581 786 169 648 398 838 514 288 559 240 78 577 817 453 40 927 419 548 794 615 850 27 845 407 427 437 740 831 790 690 303 56 473 357 164 204 62 506 306 38 745 498
 
 OBJECT =  	list_push_back.o \
 			ps_error.o \
@@ -84,11 +84,11 @@ c: all
 
 # gcc  -o checker list_push_back.o ps_error.o print_stacks.o make_ss.o make_rr.o make_rrr.o pre_validate.o init_var.o read_flags.o operation_push_back.o  checker.o reading_commands.o
 bug:
-	gcc -g $(F) -o $(NAME_2) list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
+	gcc -g $(F) -o $(NAME_1) list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
 	init_var.c read_flags.c operation_push_back.c checker.c reading_commands.c $(INCL)
 
 debug: bug
-	lldb -- $(NAME_2) $(TEST)
+	lldb -- $(NAME_1) $(TEST)
 
 %.o: ./%.c
 	$(GCC) $(F) -o $@ -c $< -I ./

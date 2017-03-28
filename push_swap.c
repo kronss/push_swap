@@ -39,7 +39,7 @@ static void			sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block
 	{
 		i == 3 ? last_sort_3_elem_b(stack_a, stack_b, block) : 0;
 		i == 2 ? sort_2_elem_b(stack_a, stack_b, block) : 0;
-		// block->rra = 0;
+		block->rra = 0;
 	}
 	else
 	{
@@ -48,49 +48,70 @@ static void			sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block
 	}
 }
 
-void			recursion_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int max_size)
+void	backtrack_stack_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int rra)
+{
+	if (rra > linked_list_len(*stack_a) / 2)
+		while (linked_list_len(*stack_a) - rra++ > 0)
+			make_ra(stack_a, stack_b, 1, block);
+	else
+		while (rra--)
+			make_rra(stack_a, stack_b, 1, block);
+}
+
+
+void			recursion_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int pushed_a)
 {
 	int push_b;
 	int rra;
 
 	push_b = 0;
 	rra = 0;
-	if (max_size <= 3)
-		return (sort_3_elem_a(stack_a, stack_b, block, max_size));
-	block->pivot_i = find_pivot(*stack_a, max_size);
-	while (find_rem_a(*stack_a, block->pivot_i))
+	if (pushed_a <= 3)
+		return (sort_3_elem_a(stack_a, stack_b, block, pushed_a));
+	block->pivot_i = find_pivot(*stack_a, pushed_a);
+	while (find_rem_a(*stack_a, block->pivot_i, pushed_a - push_b))
 	{
-		if ((*stack_a)->data < block->pivot_i && ++push_b)
+		if ((*stack_a)->data <= block->pivot_i && ++push_b)
 			make_pb(stack_a, stack_b, 1, block);
 		else
 		{
 			make_ra(stack_a, stack_b, 1, block);
-			block->rra ? rra++ : 0;
+			rra++;
 		}
 	}
-	while (block->rra && rra--)
-		make_rra(stack_a, stack_b, 1, block);
-	recursion_a(stack_a, stack_b, block, max_size - push_b);
+	if  (block->rra == 1)
+		backtrack_stack_a(stack_a, stack_b, block, rra);
+	recursion_a(stack_a, stack_b, block, pushed_a - push_b);
 	recursion_b(stack_a, stack_b, block, push_b);
 	while (push_b--)
 		make_pa(stack_a, stack_b, 1, block);
 }
 
-void 			recursion_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int push_b)
+void	backtrack_stack_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int rrb)
+{
+	if (rrb > linked_list_len(*stack_b) / 2)
+		while (linked_list_len(*stack_b) - rrb++ > 0)
+			make_rb(stack_a, stack_b, 1, block);
+	else
+		while (rrb--)
+			make_rrb(stack_a, stack_b, 1, block);
+}
+
+void 			recursion_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int pushed_b)
 {
 	int push_a;
 	int rrb;
-	int len;
 
-	if (push_b <= 3)
-		return (sort_3_elem_b(stack_a, stack_b, block, push_b));
-	len = push_b;
+
+	if (pushed_b <= 3)
+		return (sort_3_elem_b(stack_a, stack_b, block, pushed_b));
+
 	push_a = 0;
 	rrb = 0;
-	block->pivot_i = find_pivot(*stack_b, push_b);
-	while (find_rem_b(*stack_b, block->pivot_i))
+	block->pivot_i = find_pivot(*stack_b, pushed_b);
+	while (find_rem_b(*stack_b, block->pivot_i, pushed_b - push_a))
 	{
-		if ((*stack_b)->data >= block->pivot_i && ++push_a)
+		if ((*stack_b)->data > block->pivot_i && ++push_a)
 			make_pa(stack_a, stack_b, 1, block);
 		else
 		{
@@ -98,13 +119,13 @@ void 			recursion_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int pu
 			rrb++;
 		}
 	}
-	recursion_a(stack_a, stack_b, block, push_b);
-	while (rrb--)
-		make_rrb(stack_a, stack_b, 1, block);
-	recursion_b(stack_a, stack_b, block, len - push_a);
+	recursion_a(stack_a, stack_b, block, pushed_b);
+	if  (block->rra == 1)
+		backtrack_stack_b(stack_a, stack_b, block, rrb);
+	recursion_b(stack_a, stack_b, block, pushed_b - push_a);
 	while (push_a--)
 		make_pb(stack_a, stack_b, 1, block);
-}	
+}
 
 int								main(int ar, char **av)
 {
@@ -125,8 +146,20 @@ int								main(int ar, char **av)
 
 	block.max_size > 1 ? recursion_a(&stack_a, &stack_b, &block, block.max_size) : 0;
 	block.debug ? print_stacks(stack_a, stack_b) : 0; //bonus
+	
+
 	// print_stacks(stack_a, stack_b);
+
+
 	while (optimization(&block, &(block.oper)))
 		;
+	t_oper *tmp;
+	tmp = block.oper;
+	while (tmp)
+	{
+		printf("%s\n",tmp->data);
+		tmp = tmp->next;
+	}
+
 	return (0);
 }

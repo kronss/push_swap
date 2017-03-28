@@ -25,7 +25,10 @@ static int check_a_ss(t_stack *stack_a)
 void			sort_2_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 {
 	if ((*stack_b)->data < (*stack_b)->next->data)
-		check_a_ss(*stack_a) ? make_ss(stack_a, stack_b, 1, block) : make_sb(stack_a, stack_b, 1, block);
+	{	
+		// check_a_ss(*stack_a) ? make_ss(stack_a, stack_b, 1, block) : 
+		make_sb(stack_a, stack_b, 1, block);
+	}
 }
 
 static void a_biger_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
@@ -35,7 +38,8 @@ static void a_biger_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 		if ((*stack_b)->data > (*stack_b)->next->next->data) // a > c
 		{
 			make_rrb(stack_a, stack_b, 1, block);
-			check_a_ss(*stack_a) ? make_ss(stack_a, stack_b, 1, block) : make_sb(stack_a, stack_b, 1, block);
+			// check_a_ss(*stack_a) ? make_ss(stack_a, stack_b, 1, block) : 
+			make_sb(stack_a, stack_b, 1, block);
 		}
 		else if ((*stack_b)->data < (*stack_b)->next->next->data) // a < c
 			make_rrb(stack_a, stack_b, 1, block);
@@ -47,13 +51,17 @@ static void a_less_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 	if ((*stack_b)->next->data > (*stack_b)->next->next->data)  // b > c ===
 	{
 		if ((*stack_b)->data > (*stack_b)->next->next->data) // a > c
-			check_a_ss(*stack_a) ? make_ss(stack_a, stack_b, 1, block) : make_sb(stack_a, stack_b, 1, block);
+		{
+			// check_a_ss(*stack_a) ? make_ss(stack_a, stack_b, 1, block) : 
+			make_sb(stack_a, stack_b, 1, block);
+		}
 		else if ((*stack_b)->data < (*stack_b)->next->next->data) // a < c
 			make_rb(stack_a, stack_b, 1, block);
 	}
 	else // b < c worst variant
 	{
-		check_a_ss(*stack_a) ? make_ss(stack_a, stack_b, 1, block) : make_sb(stack_a, stack_b, 1, block);
+		// check_a_ss(*stack_a) ? make_ss(stack_a, stack_b, 1, block) : 
+		make_sb(stack_a, stack_b, 1, block);
 		make_rrb(stack_a, stack_b, 1, block);
 	}
 }

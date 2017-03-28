@@ -16,35 +16,23 @@
 int		compare(char *str1, char *str2)
 {
 	if (!strcmp(str1, "pa"))
-	{
 		if (!strcmp(str2, "pb"))
 			return (1);
-	}
 	if (!strcmp(str1, "pb"))
-	{
 		if (!strcmp(str2, "pa"))
 			return (1);
-	}
 	if (!strcmp(str1, "rra"))
-	{
 		if (!strcmp(str2, "ra"))
 			return (1);
-	}
 	if (!strcmp(str1, "ra"))
-	{
 		if (!strcmp(str2, "rra"))
 			return (1);
-	}
 	if (!strcmp(str1, "rb"))
-	{
 		if (!strcmp(str2, "rrb"))
 			return (1);
-	}
 	if (!strcmp(str1, "rrb"))
-	{
 		if (!strcmp(str2, "rb"))
 			return (1);
-	}
 	return (0);
 }
 
@@ -71,11 +59,11 @@ int	optimization(t_block *block, t_oper **oper)
 
 
 
-	tmp = (*oper);
-	while (tmp)
-	{
-		printf("%s\n",tmp->data);		
-		tmp = tmp->next;
-	}
+	// tmp = (*oper);
+	// while (tmp)
+	// {
+	// 	printf("%s\n",tmp->data);		
+	// 	tmp = tmp->next;
+	// }
 	return (0);
 }
