@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 static int check_b_ss(t_stack *stack_b)
 {
 	if (stack_b && stack_b->next)
@@ -35,7 +34,7 @@ static void a_biger_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 	else // b > c worst variant
 	{
 		check_b_ss(*stack_b) ? make_ss(stack_a, stack_b, 1, block) : make_sa(stack_a, stack_b, 1, block);
-		make_rra(stack_a, stack_b, 1, block);			
+		make_rra(stack_a, stack_b, 1, block);
 	}
 }
 

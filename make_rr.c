@@ -29,10 +29,10 @@ void				make_ra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	if (c == 1)
 	{
-		block->debug == 1 ? 0 : ft_printf("ra\n");
+		// block->debug == 1 ? 0 : ft_printf("ra\n");
 		operation_push_back(&block->oper, "ra") ;
 	}
-	block->debug == 1 ? ft_printf("ra\n") && print_stacks(*stack_a, *stack_b) : 0;
+	block->debug == 1 ? ft_printf("\nra\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
 
 void				make_rb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
@@ -52,10 +52,10 @@ void				make_rb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	if (c == 1)
 	{
-		block->debug == 1 ? 0 : ft_printf("rb\n");
+		// block->debug == 1 ? 0 : ft_printf("rb\n");
 		operation_push_back(&block->oper, "rb");
 	}
-	block->debug == 1 ? ft_printf("rb\n") && print_stacks(*stack_a, *stack_b) : 0;
+	block->debug == 1 ? ft_printf("\nrb\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
 
 void				make_rr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
@@ -74,8 +74,8 @@ void				make_rr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	if (c == 1)
 	{
-		block->debug == 1 ? 0 : ft_printf("rr\n");
+		// block->debug == 1 ? 0 : ft_printf("rr\n");
 		operation_push_back(&block->oper, "rr") ;
 	}
-	block->debug ? ft_printf("rr\n") && print_stacks(*stack_a, *stack_b) : 0;
+	block->debug ? ft_printf("\nrr\n") && print_stacks(*stack_a, *stack_b) : 0;
 }
