@@ -28,7 +28,7 @@ int						print_stacks(t_stack *stack_a, t_stack *stack_b)
 		stack_a ? stack_a = stack_a->next : 0;
 		stack_b ? stack_b = stack_b->next : 0;
 	}
-	ft_printf("–––––––––––––––––––––––\n");
+	ft_printf("–––––––––––––––––––––––\n\n");
 	sleep(1);
 	return (0);
 }

@@ -22,11 +22,11 @@ static t_oper		*create_operation(char *str)
 	return (new);
 }
 
-void 				operation_push_back(t_oper *oper, char *str)
+void 				operation_push_back(t_oper **oper, char *str)
 {
 	t_oper *tmp;
 
-	tmp = oper;
+	tmp = *oper;
 	if (tmp)
 	{
 		while (tmp->next)
@@ -35,6 +35,6 @@ void 				operation_push_back(t_oper *oper, char *str)
 	}
 	else
 	{
-		oper = create_operation(str);
+		*oper = create_operation(str);
 	}
 }

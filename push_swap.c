@@ -126,7 +126,7 @@ int								main(int ar, char **av)
 	block.max_size > 1 ? recursion_a(&stack_a, &stack_b, &block, block.max_size) : 0;
 	block.debug ? print_stacks(stack_a, stack_b) : 0; //bonus
 	// print_stacks(stack_a, stack_b);
-	while (optimization(&block, &(block.oper)))
-		;
+	// while (optimization(&block, &(block.oper)))
+	// 	;
 	return (0);
 }

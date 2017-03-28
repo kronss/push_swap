@@ -34,6 +34,6 @@ int		read_flags(t_block *block, char **av, int ar)
 		}
 		i++;
 	}
-	ft_printf("block->debug == %d\nblock->color == %d\nblock->file == %d\n", block->debug, block->color, block->file);
+	// ft_printf("block->debug == %d\nblock->color == %d\nblock->file == %d\n", block->debug, block->color, block->file);
 	return (i);
 }

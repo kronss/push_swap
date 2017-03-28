@@ -22,7 +22,7 @@ NAME_2 = checker
 
 INCL = libft/libft.a ft_printf/libftprintf.a
 
-TEST = $(BONUS_TEST) -v 11 40 49 6 43 21 48 1 22 5 46 7 546 54 545 7887
+TEST = $(BONUS_TEST) -v 2 1 3 6 8 5
 
 OBJECT =  	list_push_back.o \
 			ps_error.o \
