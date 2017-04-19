@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int						print_stacks(t_stack *stack_a, t_stack *stack_b)
+int		print_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_printf("–––––––––––––––––––––––\n");
 	ft_printf("   stack A | stack B   \n");

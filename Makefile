@@ -18,8 +18,7 @@ NAME_1 = push_swap
 
 NAME_2 = checker
 
-BONUS_TEST = -v
-# -v -f -c
+# BONUS_TEST = -v -f -c
 
 INCL = libft/libft.a ft_printf/libftprintf.a
 
@@ -84,7 +83,6 @@ r: all
 c: all
 	./$(NAME_2) $(TEST)
 
-# gcc  -o checker list_push_back.o ps_error.o print_stacks.o make_ss.o make_rr.o make_rrr.o pre_validate.o init_var.o read_flags.o operation_push_back.o  checker.o reading_commands.o
 bug:
 	gcc -g $(F) -o $(NAME_1) list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
 	init_var.c read_flags.c operation_push_back.c checker.c reading_commands.c $(INCL)
@@ -94,16 +92,3 @@ debug: bug
 
 %.o: ./%.c
 	$(GCC) $(F) -o $@ -c $< -I ./
-
-
-
-# ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
-
-# ra
-# ra
-# pb
-# pb
-# ss
-# pa
-# pa
-
