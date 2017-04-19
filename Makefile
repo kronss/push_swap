@@ -12,17 +12,18 @@
 
 GCC = gcc
 
-# F = -Wall -Wextra -Werror
+F = -Wall -Wextra -Werror
 
 NAME_1 = push_swap
 
 NAME_2 = checker
 
-# BONUS_TEST = -v -f -c
+BONUS_TEST = -v
+# -v -f -c
 
 INCL = libft/libft.a ft_printf/libftprintf.a
 
-TEST = $(BONUS_TEST) 315 813 911 403 244 438 658 908 980 259 436 733 475 695 246 433 814 32 351 612 521 272 192 894 956 683 445 584 370 93 66 825 774 917 787 744 250 80 231 901 866 919 384 253 798 551 807 440 791 130 609 492 230 616 864 608 881 350 581 786 169 648 398 838 514 288 559 240 78 577 817 453 40 927 419 548 794 615 850 27 845 407 427 437 740 831 790 690 303 56 473 357 164 204 62 506 306 38 745 498
+TEST = $(BONUS_TEST) 5 9 8 3 1
 
 OBJECT =  	list_push_back.o \
 			ps_error.o \
@@ -37,12 +38,13 @@ OBJECT =  	list_push_back.o \
 
 OBJECT_1 = 	$(OBJECT) \
 			push_swap.o \
-			frst_sort_3_elem_a.o \
-			next_sort_3_elem_a.o \
-			next_sort_3_elem_b.o \
-			last_sort_3_elem_b.o \
+			frst_sort_3_a.o \
+			next_sort_3_a.o \
+			next_sort_3_b.o \
+			last_sort_3_b.o \
 			add_function.o \
-			optimization.o
+			optimization.o \
+			backtrack_stack_a.o
 
 OBJECT_2 = 	$(OBJECT) \
 			checker.o \

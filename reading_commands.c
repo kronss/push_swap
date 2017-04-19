@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-static	void	choose_operation(t_stack **stack_a, t_stack **stack_b, t_block *block, char *line)
+static	void	choose_operation(t_stack **stack_a, t_stack **stack_b,
+													t_block *block, char *line)
 {
-	ft_printf("block->debug == %d\nblock->color == %d\nblock->file == %d\n", block->debug, block->color, block->file);
 	if (!ft_strcmp(line, "sa"))
 		return (make_sa(stack_a, stack_b, 0, block));
 	else if (!ft_strcmp(line, "sb"))
@@ -41,10 +41,10 @@ static	void	choose_operation(t_stack **stack_a, t_stack **stack_b, t_block *bloc
 		return (ps_error(4));
 }
 
-void			reading_commands(t_stack **stack_a, t_stack **stack_b, t_block *block)
+void			reading_commands(t_stack **stack_a, t_stack **stack_b,
+															t_block *block)
 {
 	char		*line;
-	int 		cmd;
 
 	while ((get_next_line(STDIN, &line)) > 0)
 		choose_operation(stack_a, stack_b, block, line);

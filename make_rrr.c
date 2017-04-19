@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void						make_rra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
+void	make_rra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack					*tmp;
 	t_stack					*will_be_head;
@@ -32,10 +32,11 @@ void						make_rra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 		block->debug == 1 ? 0 : ft_printf("rra\n");
 		operation_push_back(&block->oper, "rra");
 	}
-	block->debug == 1 ? ft_printf("\nrra\n") && print_stacks(*stack_a, *stack_b) : 0;
+	block->debug == 1 ? ft_printf("\nrra\n") &&
+	print_stacks(*stack_a, *stack_b) : 0;
 }
 
-void						make_rrb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
+void	make_rrb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack					*tmp;
 	t_stack					*will_be_head;
@@ -52,13 +53,14 @@ void						make_rrb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	if (c == 1)
 	{
-		block->debug == 1 ? 0 :	ft_printf("rrb\n");
+		block->debug == 1 ? 0 : ft_printf("rrb\n");
 		operation_push_back(&block->oper, "rrb");
 	}
-	block->debug == 1 ? ft_printf("\nrrb\n") && print_stacks(*stack_a, *stack_b) : 0;
+	block->debug == 1 ? ft_printf("\nrrb\n") &&
+	print_stacks(*stack_a, *stack_b) : 0;
 }
 
-void						make_rrr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
+void	make_rrr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	if (block->debug == 1)
 	{
@@ -77,5 +79,6 @@ void						make_rrr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 		block->debug == 1 ? 0 : ft_printf("rrr\n");
 		operation_push_back(&block->oper, "rrr");
 	}
-	block->debug == 1 ? ft_printf("\nrrr\n") && print_stacks(*stack_a, *stack_b) : 0;
+	block->debug == 1 ? ft_printf("\nrrr\n") &&
+	print_stacks(*stack_a, *stack_b) : 0;
 }

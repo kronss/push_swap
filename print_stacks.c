@@ -14,10 +14,6 @@
 
 int						print_stacks(t_stack *stack_a, t_stack *stack_b)
 {
-	// ft_printf("##_a %p\n", stack_a);
-	// ft_printf("##_b %p\n", stack_b);
-
-
 	ft_printf("–––––––––––––––––––––––\n");
 	ft_printf("   stack A | stack B   \n");
 	ft_printf("–––––––––––––––––––––––\n");

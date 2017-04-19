@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 int		compare(char *str1, char *str2)
 {
 	if (!strcmp(str1, "pa"))
@@ -36,34 +35,23 @@ int		compare(char *str1, char *str2)
 	return (0);
 }
 
-int	optimization(t_block *block, t_oper **oper)
+int		optimization(t_block *block, t_oper **oper)
 {
-	t_oper *tmp;
-	t_oper *tmp2;
+	t_oper	*tmp;
+	t_oper	*tmp2;
 
+	if (block)
+		;
 	tmp = (*oper);
-	// printf("=========optimization=========\n");
 	while (tmp->next && tmp->next->next)
 	{
 		if (compare(tmp->next->data, tmp->next->next->data))
 		{
 			tmp2 = tmp->next->next->next;
-			// free(tmp->next);
-			// free(tmp->next->next);
 			tmp->next = tmp2;
 			return (1);
 		}
 		tmp = tmp->next;
-
 	}
-
-
-
-	// tmp = (*oper);
-	// while (tmp)
-	// {
-	// 	printf("%s\n",tmp->data);		
-	// 	tmp = tmp->next;
-	// }
 	return (0);
 }

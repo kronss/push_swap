@@ -12,54 +12,46 @@
 
 #include "push_swap.h"
 
-static void		sort_3_elem_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int max_size)
+static void	sort_3_elem_a(t_stack **stack_a, t_stack **stack_b, t_block *block,
+																int max_size)
 {
 	int i;
 
 	i = linked_list_len(*stack_a);
 	if (i <= 3)
 	{
-		i == 3 ? frst_sort_3_elem_a(stack_a, stack_b, block) : 0;
+		i == 3 ? frst_sort_3_a(stack_a, stack_b, block) : 0;
 		i == 2 ? sort_2_elem_a(stack_a, stack_b, block) : 0;
 		block->rra = 1;
 	}
 	else
 	{
-		max_size == 3 ? next_sort_3_elem_a(stack_a, stack_b, block) : 0;
+		max_size == 3 ? next_sort_3_a(stack_a, stack_b, block) : 0;
 		max_size == 2 ? sort_2_elem_a(stack_a, stack_b, block) : 0;
 	}
 }
 
-static void			sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int max_size)
+static void	sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block,
+																int max_size)
 {
 	int i;
-	
+
 	i = linked_list_len(*stack_b);
 	if (i <= 3)
 	{
-		i == 3 ? last_sort_3_elem_b(stack_a, stack_b, block) : 0;
+		i == 3 ? last_sort_3_b(stack_a, stack_b, block) : 0;
 		i == 2 ? sort_2_elem_b(stack_a, stack_b, block) : 0;
 		block->rra = 0;
 	}
 	else
 	{
-		max_size == 3 ? next_sort_3_elem_b(stack_a, stack_b, block) : 0;
+		max_size == 3 ? next_sort_3_b(stack_a, stack_b, block) : 0;
 		max_size == 2 ? sort_2_elem_b(stack_a, stack_b, block) : 0;
 	}
 }
 
-void	backtrack_stack_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int rra)
-{
-	if (rra > linked_list_len(*stack_a) / 2)
-		while (linked_list_len(*stack_a) - rra++ > 0)
-			make_ra(stack_a, stack_b, 1, block);
-	else
-		while (rra--)
-			make_rra(stack_a, stack_b, 1, block);
-}
-
-
-void			recursion_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int pushed_a)
+void		recn_a(t_stack **stack_a, t_stack **stack_b, t_block *block,
+															int pushed_a)
 {
 	int push_b;
 	int rra;
@@ -79,33 +71,22 @@ void			recursion_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int pus
 			rra++;
 		}
 	}
-	if  (block->rra == 1)
+	if (block->rra == 1)
 		backtrack_stack_a(stack_a, stack_b, block, rra);
-	recursion_a(stack_a, stack_b, block, pushed_a - push_b);
-	recursion_b(stack_a, stack_b, block, push_b);
+	recn_a(stack_a, stack_b, block, pushed_a - push_b);
+	recn_b(stack_a, stack_b, block, push_b);
 	while (push_b--)
 		make_pa(stack_a, stack_b, 1, block);
 }
 
-void	backtrack_stack_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int rrb)
-{
-	if (rrb > linked_list_len(*stack_b) / 2)
-		while (linked_list_len(*stack_b) - rrb++ > 0)
-			make_rb(stack_a, stack_b, 1, block);
-	else
-		while (rrb--)
-			make_rrb(stack_a, stack_b, 1, block);
-}
-
-void 			recursion_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int pushed_b)
+void		recn_b(t_stack **stack_a, t_stack **stack_b,
+t_block *block, int pushed_b)
 {
 	int push_a;
 	int rrb;
 
-
 	if (pushed_b <= 3)
 		return (sort_3_elem_b(stack_a, stack_b, block, pushed_b));
-
 	push_a = 0;
 	rrb = 0;
 	block->pivot_i = find_pivot(*stack_b, pushed_b);
@@ -119,15 +100,15 @@ void 			recursion_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int pu
 			rrb++;
 		}
 	}
-	recursion_a(stack_a, stack_b, block, pushed_b);
-	if  (block->rra == 1)
+	recn_a(stack_a, stack_b, block, pushed_b);
+	if (block->rra == 1)
 		backtrack_stack_b(stack_a, stack_b, block, rrb);
-	recursion_b(stack_a, stack_b, block, pushed_b - push_a);
+	recn_b(stack_a, stack_b, block, pushed_b - push_a);
 	while (push_a--)
 		make_pb(stack_a, stack_b, 1, block);
 }
 
-int								main(int ar, char **av)
+int			main(int ar, char **av)
 {
 	t_block			block;
 	t_stack			*stack_a;
@@ -142,25 +123,7 @@ int								main(int ar, char **av)
 		i++;
 	}
 	pre_validate(stack_a, &block);
-	/*=====================================================*/
-
-	block.max_size > 1 ? recursion_a(&stack_a, &stack_b, &block, block.max_size) : 0;
-	block.debug ? print_stacks(stack_a, stack_b) : 0; //bonus
-	
-
-	// print_stacks(stack_a, stack_b);
-
-
-	// while (optimization(&block, &(block.oper)))
-	// 	;
-	// t_oper *tmp;
-	// tmp = block.oper;
-	// while (tmp)
-	// {
-	// 	printf("%s\n",tmp->data);
-	// 	tmp = tmp->next;
-	// }
-
-	// while(1);
+	block.max_size > 1 ? recn_a(&stack_a, &stack_b, &block, block.max_size) : 0;
+	block.file ? print_stacks(stack_a, stack_b) : 0;
 	return (0);
 }

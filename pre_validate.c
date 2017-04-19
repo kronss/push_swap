@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void				validate(t_stack *stack_a, int *size)
+void			validate(t_stack *stack_a, int *size)
 {
-	t_stack 		*tmp;
-	int				cmp;
+	t_stack		*tmp;
+	int			cmp;
 
 	cmp = stack_a->data;
 	tmp = stack_a->next;
@@ -33,14 +33,14 @@ void				validate(t_stack *stack_a, int *size)
 	}
 }
 
-void				pre_validate(t_stack *stack_a, t_block *block)
+void			pre_validate(t_stack *stack_a, t_block *block)
 {
-	t_stack *tmp;
+	t_stack		*tmp;
 
 	if (stack_a)
 	{
 		validate(stack_a, &block->max_size);
-		block->pivot_i =  0;
+		block->pivot_i = 0;
 		block->rra = 0;
 	}
 	else

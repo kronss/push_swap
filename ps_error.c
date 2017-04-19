@@ -12,15 +12,12 @@
 
 #include "push_swap.h"
 
-
-
 void				ps_error(char i)
 {
-	i == 1 ? ft_printf("dupicate was found =(\n") : 0;
-	i == 2 ? ft_printf("value isn't valid  =(\n") : 0;
-	i == 3 ? ft_printf("empty value        =(\n") : 0;
-	i == 4 ? ft_printf("wrong command      =(\n") : 0;
-	i == 5 ? ft_printf("MAX-MIN-INT        =(\n") : 0;
-
+	i == 1 ? ft_printf("Error\n") : 0;
+	i == 2 ? ft_printf("Error\n") : 0;
+	i == 3 ? ft_printf("Error\n") : 0;
+	i == 4 ? ft_printf("Error\n") : 0;
+	i == 5 ? ft_printf("Error\n") : 0;
 	exit(i);
 }
