@@ -21,7 +21,6 @@ static	void	checker(t_stack *stack_a, t_stack *stack_b)
 	{
 		while (stack_a)
 		{
-			// ft_printf("cheker %d\n", tmp);
 			if (tmp > stack_a->data)
 			{
 				ft_printf("KO\n");

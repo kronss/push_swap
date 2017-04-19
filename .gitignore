@@ -3,6 +3,10 @@ a.out
 ._*
 .DS_Store
 a.out.dSYM/*
+push_swap.dSYM/*
 *.exe
 *.out
 .nfs.*
+push_swap
+checker
+*.a

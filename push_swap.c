@@ -151,15 +151,16 @@ int								main(int ar, char **av)
 	// print_stacks(stack_a, stack_b);
 
 
-	while (optimization(&block, &(block.oper)))
-		;
-	t_oper *tmp;
-	tmp = block.oper;
-	while (tmp)
-	{
-		printf("%s\n",tmp->data);
-		tmp = tmp->next;
-	}
+	// while (optimization(&block, &(block.oper)))
+	// 	;
+	// t_oper *tmp;
+	// tmp = block.oper;
+	// while (tmp)
+	// {
+	// 	printf("%s\n",tmp->data);
+	// 	tmp = tmp->next;
+	// }
 
+	// while(1);
 	return (0);
 }

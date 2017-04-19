@@ -19,7 +19,6 @@ char			find_rem_a(t_stack *stack_a, int pivot, int push_a)
 	i = 0;
 	while (stack_a && (i < push_a))
 	{
-		// printf("a == %d\n", stack_a->data);
 		if (stack_a->data <= pivot)
 			return (1);
 		stack_a = stack_a->next;
@@ -33,10 +32,8 @@ char			find_rem_b(t_stack *stack_b, int pivot, int push_b)
 	int i;
 
 	i = 0;
-
 	while (stack_b && (i < push_b))
 	{
-			// printf("b == %d\n", stack_b->data);
 		if (stack_b->data > pivot)
 			return (1);
 		stack_b = stack_b->next;
@@ -44,7 +41,6 @@ char			find_rem_b(t_stack *stack_b, int pivot, int push_b)
 	}
 	return (0);
 }
-
 
 int				find_pivot(t_stack *stack_a, int max_size)
 {
