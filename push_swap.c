@@ -108,22 +108,36 @@ t_block *block, int pushed_b)
 		make_pb(stack_a, stack_b, 1, block);
 }
 
+
+
+
 int			main(int ar, char **av)
 {
-	t_block			block;
-	t_stack			*stack_a;
-	t_stack			*stack_b;
 	int				i;
 
-	init_var(&block, &stack_a, &stack_b);
-	i = read_flags(&block, av, ar);
+	init_g_var();
+	i = read_flags(av, ar);
 	while (i < ar)
 	{
-		list_push_back(&stack_a, ft_atol(av[i]), av[i]);
-		i++;
+		list_push_back(ft_atol(av[i]), av[i]);
+		++i;
 	}
-	pre_validate(stack_a, &block);
-	block.max_size > 1 ? recn_a(&stack_a, &stack_b, &block, block.max_size) : 0;
-	block.file ? print_stacks(stack_a, stack_b) : 0;
+	pre_validate();
+
+
+	// block.max_size > 1 ? recn_a(&stack_a, &stack_b, &block, block.max_size) : 0;
+
+
+	while (!(g_block.is_a_sort(g_stack_head_a) && g_block.is_b_empty))
+	{
+
+
+
+
+	}
+
+
+
+	g_block.file ? print_stacks(stack_a, stack_b) : 0;
 	return (0);
 }

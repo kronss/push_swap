@@ -33,22 +33,22 @@ void			validate(t_stack *stack_a, int *size)
 	}
 }
 
-void			pre_validate(t_stack *stack_a, t_block *block)
+void			pre_validate()
 {
 	t_stack		*tmp;
 
-	if (stack_a)
+	if (g_stack_head_a)
 	{
-		validate(stack_a, &block->max_size);
-		block->pivot_i = 0;
-		block->rra = 0;
+		validate(g_stack_head_a, &g_block.max_size);
+		g_block.pivot_i = 0;
+		g_block.rra = 0;
 	}
 	else
 		exit(0);
-	tmp = stack_a;
+	tmp = g_stack_head_a;
 	while (tmp)
 	{
-		tmp->p = block->max_size - 1;
+		tmp->p = g_block.max_size - 1;
 		tmp = tmp->next;
 	}
 }

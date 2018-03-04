@@ -44,11 +44,11 @@ void			check_value(char *str)
 	}
 }
 
-void			list_push_back(t_stack **begin_list, long a, char *str)
+void			list_push_back(long a, char *str)
 {
 	t_stack		*list;
 
-	list = *begin_list;
+	list = g_stack_head_a;
 	check_value(str);
 	if (!(-2147483648 <= a && a <= 2147483647))
 		ps_error(5);
@@ -59,5 +59,5 @@ void			list_push_back(t_stack **begin_list, long a, char *str)
 		list->next = create_elem((int)a);
 	}
 	else
-		*begin_list = create_elem((int)a);
+		list = create_elem((int)a);
 }

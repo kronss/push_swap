@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_var.c                                         :+:      :+:    :+:   */
+/*   init_g_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,52 @@
 
 #include "push_swap.h"
 
-void		init_var(t_block *b, t_stack **s_a, t_stack **s_b)
+int		func_is_a_sort(t_stack *stack_a)
 {
-	b->debug = 0;
-	b->file = 0;
-	b->color = 0;
-	b->max_size = 1;
-	*s_a = NULL;
-	*s_b = NULL;
-	b->oper = NULL;
-	b->pivot_i = 0;
+	int		tmp;
+
+	tmp = stack_a->data;
+	if (!stack_a->next)
+		return (TRUE);
+	stack_a =stack_a->next;
+	if (stack_a)
+	{
+		while (stack_a)
+		{
+			// ft_printf("cheker %d\n", tmp);
+			if (tmp > stack_a->data)
+			{
+				return (FALSE) ;
+			}
+			tmp = stack_a->data;
+			stack_a = stack_a->next;
+		}
+	}
+	return (TRUE);
+}
+
+int		func_is_b_empty()
+{
+	if (g_stack_head_b)
+	{
+		return (FALSE);
+	}
+	return (TRUE);
+}
+
+
+void		init_g_var()
+{
+	g_block.debug = 0;
+	g_block.file = 0;
+	g_block.color = 0;
+	g_block.max_size = 1;
+	g_stack_head_a = NULL;
+	g_stack_head_b = NULL;
+	g_block.oper = NULL;
+	g_block.pivot_i = 0;
+
+	g_block.is_a_sort = &func_is_a_sort;
+	g_block.is_b_empty = &func_is_b_empty;
+
 }

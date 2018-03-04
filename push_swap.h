@@ -16,7 +16,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+// # include "ft_printf/ft_printf.h"
+#include <stdio.h>
+
+# define ft_printf printf
+
+# define TRUE 1l
+# define FALSE 0l
 
 typedef struct		s_stack
 {
@@ -40,13 +46,20 @@ typedef struct		s_block
 	int				pivot_i;
 	int				rra;
 	t_oper			*oper;
+	int				(*is_a_sort)(t_stack *);
+	int				(*is_b_empty)(t_stack *);	
 }					t_block;
 
-void				list_push_back(t_stack **begin_list, long a, char *str);
+
+t_block			g_block;
+t_stack			*g_stack_head_a;
+t_stack			*g_stack_head_b;
+
+void				list_push_back(long a, char *str);
 void				ps_error(char i);
-void				pre_validate(t_stack *s_a, t_block *bk);
-int					read_flags(t_block *bk, char **av, int ar);
-void				init_var(t_block *b, t_stack **s_a, t_stack **s_b);
+void				pre_validate();
+int					read_flags(char **av, int ar);
+void				init_g_var();
 void				frst_sort_3_a(t_stack **s_a, t_stack **s_b, t_block *bk);
 void				next_sort_3_a(t_stack **s_a, t_stack **s_b, t_block *bk);
 void				last_sort_3_b(t_stack **s_a, t_stack **s_b, t_block *bk);
