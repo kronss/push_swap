@@ -12,7 +12,7 @@
 
 GCC = gcc
 
-F = -Wall -Wextra -Werror
+# F = -Wall -Wextra -Werror
 
 NAME_1 = push_swap
 
@@ -20,7 +20,7 @@ NAME_2 = checker
 
 # BONUS_TEST = -v -f -c
 
-INCL = libft/libft.a ft_printf/libftprintf.a
+INCL = libft/libft.a  ### ft_printf/libftprintf.a
 
 TEST = $(BONUS_TEST) 5 9 8 3 1
 
@@ -53,26 +53,26 @@ OBJECT_2 = 	$(OBJECT) \
 
 all: $(NAME_1) $(NAME_2)
 	@make -C libft/
-	@make -C ft_printf/
+	# @make -C ft_printf/
 
 $(NAME_1): $(OBJECT_1)
 		@make -C libft/
-		@make -C ft_printf/
+		# @make -C ft_printf/
 		$(GCC) $(F) -o $(NAME_1) $(OBJECT_1) $(INCL)
 
 $(NAME_2): $(OBJECT_2)
 		@make -C libft/
-		@make -C ft_printf/
+		# @make -C ft_printf/
 		$(GCC) $(F) -o $(NAME_2) $(OBJECT_2) $(INCL)
 
 clean:
 	@make clean -C libft/
-	@make clean -C ft_printf/
+	# @make clean -C ft_printf/
 	rm -rf $(OBJECT_1) $(OBJECT_2)
 
 fclean: clean
 	@make fclean -C libft/
-	@make fclean -C ft_printf/
+	# @make fclean -C ft_printf/
 	@rm -rf $(NAME_1) $(NAME_2) a.out
 
 re: fclean all

@@ -1,0 +1,156 @@
+previos_nbr  1
+curr_a->data  2
+previos_nbr  2
+curr_a->data  4
+previos_nbr  4
+curr_a->data  3
+start->block->size_a  8
+start->block->size_b  0
+
+pb
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 2         |          1
+ 4         |
+ 3         |
+ 5         |
+ 6         |
+ 7         |
+ 8         |
+–––––––––––––––––––––––
+pivot == 4
+block->size_a  7
+block->size_b  0
+
+pb
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 4         |          2
+ 3         |          1
+ 5         |
+ 6         |
+ 7         |
+ 8         |
+–––––––––––––––––––––––
+pivot == 4
+block->size_a  6
+block->size_b  0
+
+ra
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 3         |          2
+ 5         |          1
+ 6         |
+ 7         |
+ 8         |
+ 4         |
+–––––––––––––––––––––––
+pivot == 4
+block->size_a  5
+block->size_b  0
+
+pb
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 5         |          3
+ 6         |          2
+ 7         |          1
+ 8         |
+ 4         |
+–––––––––––––––––––––––
+pivot == 4
+block->size_a  4
+block->size_b  0
+
+ra
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 6         |          3
+ 7         |          2
+ 8         |          1
+ 4         |
+ 5         |
+–––––––––––––––––––––––
+pivot == 4
+block->size_a  3
+block->size_b  0
+
+ra
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 7         |          3
+ 8         |          2
+ 4         |          1
+ 5         |
+ 6         |
+–––––––––––––––––––––––
+pivot == 4
+block->size_a  2
+block->size_b  0
+
+ra
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 8         |          3
+ 4         |          2
+ 5         |          1
+ 6         |
+ 7         |
+–––––––––––––––––––––––
+pivot == 4
+block->size_a  1
+block->size_b  0
+----------------------------------
+start->block->size_a  4
+start->block->size_b  3
+
+ra
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 4         |          3
+ 5         |          2
+ 6         |          1
+ 7         |
+ 8         |
+–––––––––––––––––––––––
+pivot == 5
+block->size_a  3
+block->size_b  3
+
+pb
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 5         |          4
+ 6         |          3
+ 7         |          2
+ 8         |          1
+–––––––––––––––––––––––
+pivot == 5
+block->size_a  2
+block->size_b  3
+
+ra
+–––––––––––––––––––––––
+   stack A | stack B   
+–––––––––––––––––––––––
+ 6         |          4
+ 7         |          3
+ 8         |          2
+ 5         |          1
+–––––––––––––––––––––––
+pivot == 5
+block->size_a  1
+block->size_b  3
+----------------------------------
+start->block->size_a  2
+start->block->size_b  1

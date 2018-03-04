@@ -56,18 +56,41 @@ int				find_pivot(t_stack *stack_a, int max_size)
 	}
 	i--;
 	q_sort(arr, 0, i);
-	return (arr[(0 + i) / 2]);
+
+
+	return (arr[i / 2]);
 }
 
-int				linked_list_len(t_stack *tmp)
+uint			linked_list_len(t_stack *tmp)
 {
-	int i;
+	uint i;
 
 	i = 0;
 	while (tmp)
 	{
-		i++;
+		++i;
 		tmp = tmp->next;
 	}
 	return (i);
+}
+
+int				is_a_sorted(t_stack *curr_a)
+{
+	int previos_nbr;
+
+	previos_nbr = curr_a->data;
+	curr_a = curr_a->next;
+	while (curr_a)
+	{
+		printf("previos_nbr  %d\n", previos_nbr);
+		printf("curr_a->data  %d\n", curr_a->data);
+
+		if (previos_nbr > curr_a->data)
+		{
+			return (FALSE);
+		}
+		previos_nbr = curr_a->data;
+		curr_a = curr_a->next;
+	}
+	return (TRUE);
 }

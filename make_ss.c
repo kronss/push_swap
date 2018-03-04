@@ -30,6 +30,9 @@ void	make_pb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	block->debug == 1 ? ft_printf("\npb\n") &&
 	print_stacks(*stack_a, *stack_b) : 0;
+	// block->size_a--;
+	// block->size_b++;
+
 }
 
 void	make_pa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
@@ -50,6 +53,8 @@ void	make_pa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	block->debug == 1 ? ft_printf("\npa\n") &&
 	print_stacks(*stack_a, *stack_b) : 0;
+	// block->size_a++;
+	// block->size_b--;
 }
 
 void	make_sa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
