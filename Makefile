@@ -18,7 +18,7 @@ NAME_1 = push_swap
 
 NAME_2 = checker
 
-# BONUS_TEST = -v -f -c
+BONUS_TEST = -v -f -c
 
 INCL = libft/libft.a  ### ft_printf/libftprintf.a
 
@@ -84,11 +84,12 @@ c: all
 	./$(NAME_2) $(TEST)
 
 bug:
-	gcc -g $(F) -o $(NAME_1) list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
-	init_var.c read_flags.c operation_push_back.c checker.c reading_commands.c $(INCL)
+	gcc -g $(F) -o $(NAME_1) push_swap.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
+	init_var.c read_flags.c operation_push_back.c frst_sort_3_a.c next_sort_3_a.c \
+	next_sort_3_b.c last_sort_3_b.c add_function.c optimization.c backtrack_stack_a.c $(INCL)
 
 debug: bug
-	lldb -- $(NAME_1) $(TEST)
+	gdb  $(NAME_1) -v 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
 
 %.o: ./%.c
 	$(GCC) $(F) -o $@ -c $< -I ./

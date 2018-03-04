@@ -65,14 +65,13 @@ void				last_sort_3_b(t_stack **s_a, t_stack **s_b, t_block *bk);
 void				next_sort_3_b(t_stack **s_a, t_stack **s_b, t_block *bk);
 char				check_ss(t_stack *s_b, t_block *bk);
 char				check_rr_or_rrr(t_stack *s_b, t_block *bk);
-int					find_pivot(t_stack *s_a, int max_size);
+int					find_pivot(t_stack *tmp, int max_size);
 void				sort_2_elem_a(t_stack **s_a, t_stack **s_b, t_block *bk);
 void				sort_2_elem_b(t_stack **s_a, t_stack **s_b, t_block *bk);
-void				recn_a(t_stack **s_a, t_stack **s_b, t_block *bk);
-void				recn_b(t_stack **s_a, t_stack **s_b, t_block *bk);
-char				find_rem_a(t_stack *s_a, int pivot, int push_a);
-char				find_rem_b(t_stack *s_b, int pivot, int push_b);
-int					find_pivot(t_stack *s_a, int max_size);
+void				recn_a(t_stack **s_a, t_stack **s_b, t_block *bk, int cnt);
+void				recn_b(t_stack **s_a, t_stack **s_b, t_block *bk, int cnt);
+int					rem_less_then_pivot(t_stack *curr, int pivot, int max);
+int					rem_more_then_pivot(t_stack *curr, int pivot, int max);
 uint				linked_list_len(t_stack *tmp);
 int					optimization(t_block *bk, t_oper **oper);
 void				operation_push_back(t_oper **oper, char *str);
@@ -93,7 +92,6 @@ void				backtrack_stack_a(t_stack **stack_a, t_stack **stack_b,
 													t_block *block, int rra);
 void				backtrack_stack_b(t_stack **stack_a, t_stack **stack_b,
 													t_block *block, int rrb);
-int					is_a_sorted(t_stack *curr_a);
-
+int					is_sorted(t_stack *curr);
 
 #endif

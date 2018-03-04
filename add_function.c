@@ -12,51 +12,50 @@
 
 #include "push_swap.h"
 
-char			find_rem_a(t_stack *stack_a, int pivot, int push_a)
+int				rem_less_then_pivot(t_stack *curr, int pivot, int max)
 {
 	int i;
 
 	i = 0;
-	while (stack_a && (i < push_a))
+	while (curr && (i < max))
 	{
-		if (stack_a->data <= pivot)
+		if (curr->data < pivot) /* less then pivot */
 			return (1);
-		stack_a = stack_a->next;
+		curr = curr->next;
 		i++;
 	}
 	return (0);
 }
 
-char			find_rem_b(t_stack *stack_b, int pivot, int push_b)
+int				rem_more_then_pivot(t_stack *curr, int pivot, int max)
 {
 	int i;
 
 	i = 0;
-	while (stack_b && (i < push_b))
+	while (curr && (i < max))
 	{
-		if (stack_b->data > pivot)
+		if (curr->data > pivot) /* more then pivot */
 			return (1);
-		stack_b = stack_b->next;
+		curr = curr->next;
 		i++;
 	}
 	return (0);
 }
 
-int				find_pivot(t_stack *stack_a, int max_size)
+int				find_pivot(t_stack *tmp, int max_size)
 {
 	int arr[max_size];
 	int i;
 
 	i = 0;
-	while (stack_a && i < max_size)
+	while (tmp && i < max_size)
 	{
-		arr[i] = stack_a->data;
-		stack_a = stack_a->next;
+		arr[i] = tmp->data;
+		tmp = tmp->next;
 		i++;
 	}
 	i--;
 	q_sort(arr, 0, i);
-
 
 	return (arr[i / 2]);
 }
@@ -68,29 +67,31 @@ uint			linked_list_len(t_stack *tmp)
 	i = 0;
 	while (tmp)
 	{
-		++i;
+		i++;
 		tmp = tmp->next;
 	}
 	return (i);
 }
 
-int				is_a_sorted(t_stack *curr_a)
+int				is_sorted(t_stack *curr)
 {
 	int previos_nbr;
 
-	previos_nbr = curr_a->data;
-	curr_a = curr_a->next;
-	while (curr_a)
+	previos_nbr = curr->data;
+	curr = curr->next;
+	while (curr)
 	{
-		printf("previos_nbr  %d\n", previos_nbr);
-		printf("curr_a->data  %d\n", curr_a->data);
+		// printf("previos_nbr  %d\n", previos_nbr);
+		// printf("curr->data  %d\n", curr->data);
 
-		if (previos_nbr > curr_a->data)
+		if (previos_nbr > curr->data)
 		{
 			return (FALSE);
 		}
-		previos_nbr = curr_a->data;
-		curr_a = curr_a->next;
+		previos_nbr = curr->data;
+		curr = curr->next;
 	}
 	return (TRUE);
 }
+
+
