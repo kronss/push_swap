@@ -94,4 +94,10 @@ void				backtrack_stack_b(t_stack **stack_a, t_stack **stack_b,
 													t_block *block, int rrb);
 int					is_sorted(t_stack *curr);
 
+
+void				sort_3_elem_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int cnt);
+void				sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int max_size);
+
+
+
 #endif

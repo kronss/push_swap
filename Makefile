@@ -37,6 +37,7 @@ OBJECT =  	list_push_back.o \
 
 OBJECT_1 = 	$(OBJECT) \
 			push_swap.o \
+			sorting_logic.o \
 			frst_sort_3_a.o \
 			next_sort_3_a.o \
 			next_sort_3_b.o \
@@ -68,7 +69,7 @@ $(NAME_2): $(OBJECT_2)
 clean:
 	@make clean -C libft/
 	# @make clean -C ft_printf/
-	rm -rf $(OBJECT_1) $(OBJECT_2)
+	rm -rf $(OBJECT_1) $(OBJECT_2) $(OBJECT)
 
 fclean: clean
 	@make fclean -C libft/
@@ -86,10 +87,11 @@ c: all
 bug:
 	gcc -g $(F) -o $(NAME_1) push_swap.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
 	init_var.c read_flags.c operation_push_back.c frst_sort_3_a.c next_sort_3_a.c \
-	next_sort_3_b.c last_sort_3_b.c add_function.c optimization.c backtrack_stack_a.c $(INCL)
+	next_sort_3_b.c last_sort_3_b.c add_function.c optimization.c backtrack_stack_a.c \
+	sorting_logic.c $(INCL)
 
 debug: bug
-	gdb  $(NAME_1) -v 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
+	gdb  --args $(NAME_1)   -v  12 11 10 9 8 7 6 5 4 3 2 1
 
 %.o: ./%.c
 	$(GCC) $(F) -o $@ -c $< -I ./
