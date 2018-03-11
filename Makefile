@@ -12,7 +12,7 @@
 
 GCC = gcc
 
-F = -Wall -Wextra -Werror
+# F = -Wall -Wextra -Werror
 
 NAME_1 = push_swap
 

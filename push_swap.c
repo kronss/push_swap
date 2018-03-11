@@ -109,9 +109,12 @@ int			main(int ar, char **av)
 
 
 
+	optimization(&block);
+
+
+
+
 
 	print_operation(&block.copy_a, &stack_b, &block);
-
-
 	return (0);
 }
