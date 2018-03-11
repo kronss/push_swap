@@ -24,6 +24,7 @@
 # define TRUE  1
 # define FALSE 0
 
+
 typedef struct		s_stack
 {
 	int				data;
@@ -46,6 +47,7 @@ typedef struct		s_block
 	int				pivot_i;
 	int				rra;
 	t_oper			*oper;
+	t_stack			*copy_a;
 
 	uint			size_a;
 	uint			size_b;
@@ -72,7 +74,7 @@ void				recn_a(t_stack **s_a, t_stack **s_b, t_block *bk, int cnt);
 void				recn_b(t_stack **s_a, t_stack **s_b, t_block *bk, int cnt);
 int					rem_less_then_pivot(t_stack *curr, int pivot, int max);
 int					rem_more_then_pivot(t_stack *curr, int pivot, int max);
-uint				linked_list_len(t_stack *tmp);
+int					linked_list_len(t_stack *tmp);
 int					optimization(t_block *bk, t_oper **oper);
 void				operation_push_back(t_oper **oper, char *str);
 void				reading_commands(t_stack **s_a, t_stack **s_b, t_block *bk);
@@ -97,6 +99,14 @@ int					is_sorted(t_stack *curr);
 
 void				sort_3_elem_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int cnt);
 void				sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int max_size);
+
+
+
+t_stack				*create_elem(int a);
+void				create_dirty_copy_a(t_stack *stack_a, t_block *block);
+
+void				print_operation(t_stack **copy_a, t_stack **stack_b, t_block *block);
+
 
 
 

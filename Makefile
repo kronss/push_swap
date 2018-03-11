@@ -12,7 +12,7 @@
 
 GCC = gcc
 
-# F = -Wall -Wextra -Werror
+F = -Wall -Wextra -Werror
 
 NAME_1 = push_swap
 
@@ -44,7 +44,8 @@ OBJECT_1 = 	$(OBJECT) \
 			last_sort_3_b.o \
 			add_function.o \
 			optimization.o \
-			backtrack_stack_a.o
+			backtrack_stack_a.o \
+			print_operation.o
 
 OBJECT_2 = 	$(OBJECT) \
 			checker.o \
@@ -88,7 +89,7 @@ bug:
 	gcc -g $(F) -o $(NAME_1) push_swap.c list_push_back.c ps_error.c print_stacks.c make_ss.c make_rr.c make_rrr.c pre_validate.c \
 	init_var.c read_flags.c operation_push_back.c frst_sort_3_a.c next_sort_3_a.c \
 	next_sort_3_b.c last_sort_3_b.c add_function.c optimization.c backtrack_stack_a.c \
-	sorting_logic.c $(INCL)
+	sorting_logic.c  print_operation.c $(INCL)
 
 debug: bug
 	gdb  --args $(NAME_1)   -v  12 11 10 9 8 7 6 5 4 3 2 1

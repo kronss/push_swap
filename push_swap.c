@@ -26,18 +26,17 @@ void		recn_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int cnt)
 	if (cnt <= 3)
 		return (sort_3_elem_a(stack_a, stack_b, block, cnt));
 	pivot = find_pivot(*stack_a, cnt);
-	printf("A: pivot %d\n", pivot);
+	// printf("A: pivot %d\n", pivot);
 	while (cnt >= 0)
 	{
-		if (rem_less_then_pivot(*stack_a, pivot, cnt))
+		if (!rem_less_then_pivot(*stack_a, pivot, cnt))
+			break;	
+		if ((*stack_a)->data < pivot && ++pushed_cnt)
+			make_pb(stack_a, stack_b, 1, block);
+		else
 		{
-			if ((*stack_a)->data < pivot && ++pushed_cnt)
-				make_pb(stack_a, stack_b, 1, block);
-			else
-			{
-				make_ra(stack_a, stack_b, 1, block);
-				rotate_cnt++;
-			}
+			make_ra(stack_a, stack_b, 1, block);
+			rotate_cnt++;
 		}
 		cnt--;
 	}
@@ -63,18 +62,17 @@ void		recn_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int cnt)
 	if (cnt <= 3)
 		return (sort_3_elem_b(stack_a, stack_b, block, cnt));//TODO:re-code logic
 	pivot = find_pivot(*stack_b, cnt);
-	printf("B: pivot %d\n", pivot);
+	// printf("B: pivot %d\n", pivot);
 	while (cnt >= 0)
 	{
-		if (rem_more_then_pivot(*stack_b, pivot, cnt))
+		if (!rem_more_then_pivot(*stack_b, pivot, cnt))
+			break;
+		if ((*stack_b)->data > pivot && ++pushed_cnt) // if ((*stack_b)->data > pivot)
+			make_pa(stack_a, stack_b, 1, block);
+		else
 		{
-			if ((*stack_b)->data > pivot && ++pushed_cnt) // if ((*stack_b)->data > pivot)
-				make_pa(stack_a, stack_b, 1, block);
-			else
-			{
-				make_rb(stack_a, stack_b, 1, block);
-				rotate_cnt++;
-			}
+			make_rb(stack_a, stack_b, 1, block);
+			rotate_cnt++;
 		}
 		cnt--;
 	}
@@ -103,8 +101,17 @@ int			main(int ar, char **av)
 	pre_validate(stack_a, &block);
 	if (is_sorted(stack_a))
 		return (0);
+	create_dirty_copy_a(stack_a, &block);
 	block.size_a = linked_list_len(stack_a);
 	block.max_size > 1 ? recn_a(&stack_a, &stack_b, &block, block.size_a) : 0;
-	block.file ? print_stacks(stack_a, stack_b) : 0;
+//	print_operation(&block.copy_a, &stack_b, &block);
+
+
+
+
+
+	print_operation(&block.copy_a, &stack_b, &block);
+
+
 	return (0);
 }

@@ -40,8 +40,7 @@ int		optimization(t_block *block, t_oper **oper)
 	t_oper	*tmp;
 	t_oper	*tmp2;
 
-	if (block)
-		;
+	block = block;
 	tmp = (*oper);
 	while (tmp->next && tmp->next->next)
 	{
@@ -55,3 +54,8 @@ int		optimization(t_block *block, t_oper **oper)
 	}
 	return (0);
 }
+
+
+
+
+

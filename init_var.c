@@ -38,8 +38,9 @@ void		init_var(t_block *b, t_stack **s_a, t_stack **s_b)
 	b->file = 0;
 	b->color = 0;
 	b->max_size = 1;
-	b->oper = NULL;
 	b->pivot_i = 0;
+	b->oper = NULL;
+	b->copy_a = NULL;
 
 	b->size_a = 0;
 	b->size_b = 0;
