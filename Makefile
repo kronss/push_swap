@@ -46,7 +46,9 @@ OBJECT_1 = 	$(OBJECT) \
 			optimization.o \
 			backtrack_stack_a.o \
 			print_operation.o \
-			free_memory.o
+			free_memory.o \
+			opt_is_have_anti_oper.o \
+			opt_is_double_node.o
 
 OBJECT_2 = 	$(OBJECT) \
 			checker.o \

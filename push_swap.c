@@ -23,7 +23,7 @@ void		recn_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int cnt)
 	pushed_cnt = 0;
 	size = cnt;
 	rotate_cnt = 0;
-	if (cnt <= 3)
+	if (cnt < 3)
 		return (sort_3_elem_a(stack_a, stack_b, block, cnt));
 	pivot = find_pivot(*stack_a, cnt);
 	// printf("A: pivot %d\n", pivot);
@@ -59,7 +59,7 @@ void		recn_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int cnt)
 	pushed_cnt = 0;
 	size = cnt;
 	rotate_cnt = 0;
-	if (cnt <= 3)
+	if (cnt < 3)
 		return (sort_3_elem_b(stack_a, stack_b, block, cnt));//TODO:re-code logic
 	pivot = find_pivot(*stack_b, cnt);
 	// printf("B: pivot %d\n", pivot);
@@ -116,6 +116,6 @@ int			main(int ar, char **av)
 
 
 	print_operation(&block.copy_a, &stack_b, &block);
-	free_memory(&stack_a, &stack_b, &block);
+	// free_memory(&stack_a, &stack_b, &block);
 	return (0);
 }

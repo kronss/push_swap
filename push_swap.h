@@ -110,6 +110,9 @@ void				optimization(t_block *block);
 void				print_operation(t_stack **copy_a, t_stack **stack_b, t_block *block);
 void				free_memory(t_stack **stack_a, t_stack **stack_b, t_block *block);
 
+int	opt_is_have_anti_oper(t_oper *oper);
+int opt_is_double_node(t_oper *oper);
+
 
 
 
