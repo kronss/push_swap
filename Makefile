@@ -45,7 +45,8 @@ OBJECT_1 = 	$(OBJECT) \
 			add_function.o \
 			optimization.o \
 			backtrack_stack_a.o \
-			print_operation.o
+			print_operation.o \
+			free_memory.o
 
 OBJECT_2 = 	$(OBJECT) \
 			checker.o \

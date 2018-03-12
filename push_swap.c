@@ -116,5 +116,6 @@ int			main(int ar, char **av)
 
 
 	print_operation(&block.copy_a, &stack_b, &block);
+	free_memory(&stack_a, &stack_b, &block);
 	return (0);
 }
