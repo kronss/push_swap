@@ -49,10 +49,6 @@ int opt_is_extra_oper(t_oper *oper)
 	return (res);
 }
 
-
-
-
-
 void		optimization(t_block *block)
 {
 	int is_running;
