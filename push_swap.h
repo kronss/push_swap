@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include "libft.h"
 // # include "ft_printf/ft_printf.h"
 
 # include "stdio.h"
@@ -23,7 +23,17 @@
 
 # define TRUE  1
 # define FALSE 0
+# define CHECKER 1
+# define PUSH_SWAP 2
 
+enum e_enum
+{
+	PUSHED_CNT = 0,
+	PIVOT,
+	SIZE,
+	ROTATE_CNT,
+	MAX_VAR
+};
 
 typedef struct		s_stack
 {
@@ -53,12 +63,13 @@ typedef struct		s_block
 	uint			size_b;
 	uint			max_a_operation;
 	uint			max_b_operation;
+	int				program;
 }					t_block;
 
 void				list_push_back(t_stack **begin_list, long a, char *str);
 int					ps_error(char i);
 void				pre_validate(t_stack *s_a, t_block *bk);
-int					read_flags(t_block *bk, char **av, int ar);
+int					read_flags(t_block *bk, char **av, int ar, int program);
 void				init_var(t_block *b, t_stack **s_a, t_stack **s_b);
 void 				init_tmp_var(t_block *b, t_block *tmp_block);
 void				frst_sort_3_a(t_stack **s_a, t_stack **s_b, t_block *bk);

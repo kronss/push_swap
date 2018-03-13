@@ -35,6 +35,8 @@ int	make_rra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	// block->debug == 1 ? ft_printf("\nrra\n") &&
 	// print_stacks(*stack_a, *stack_b) : 0;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
 	return (1);
 }
 
@@ -61,6 +63,8 @@ int	make_rrb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	// block->debug == 1 ? ft_printf("\nrrb\n") &&
 	// print_stacks(*stack_a, *stack_b) : 0;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
 	return (1);
 }
 
@@ -85,5 +89,7 @@ int	make_rrr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	// block->debug == 1 ? ft_printf("\nrrr\n") &&
 	// print_stacks(*stack_a, *stack_b) : 0;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
 	return (1);
 }

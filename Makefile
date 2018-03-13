@@ -12,7 +12,7 @@
 
 GCC = gcc
 
-F = -Wall -Wextra -Werror
+F = -Wall -Wextra -Werror -I ./libft/inc -I ./ft_printf/
 
 NAME_1 = push_swap
 
@@ -33,7 +33,8 @@ OBJECT =  	list_push_back.o \
 			pre_validate.o \
 			init_var.o \
 			read_flags.o \
-			operation_push_back.o 
+			operation_push_back.o \
+			free_memory.o
 
 OBJECT_1 = 	$(OBJECT) \
 			push_swap.o \
@@ -46,7 +47,6 @@ OBJECT_1 = 	$(OBJECT) \
 			optimization.o \
 			backtrack_stack_a.o \
 			print_operation.o \
-			free_memory.o \
 			opt_is_have_anti_oper.o \
 			opt_is_double_node.o
 

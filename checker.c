@@ -44,7 +44,7 @@ int				main(int ar, char **av)
 	int				i;
 
 	init_var(&block, &stack_a, &stack_b);
-	i = read_flags(&block, av, ar);
+	i = read_flags(&block, av, ar, CHECKER);
 	while (i < ar)
 	{
 		list_push_back(&stack_a, ft_atol(av[i]), av[i]);
@@ -53,5 +53,6 @@ int				main(int ar, char **av)
 	pre_validate(stack_a, &block);
 	reading_commands(&stack_a, &stack_b, &block);
 	checker(stack_a, stack_b);
+	free_memory(&stack_a, &stack_b, &block);
 	return (0);
 }

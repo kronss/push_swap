@@ -46,6 +46,8 @@ void			reading_commands(t_stack **stack_a, t_stack **stack_b,
 {
 	char		*line;
 
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
 	while ((get_next_line(STDIN, &line)) > 0)
 		choose_operation(stack_a, stack_b, block, line);
 	ft_strdel(&line);

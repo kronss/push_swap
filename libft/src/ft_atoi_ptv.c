@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_ptv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/28 12:41:21 by ochayche          #+#    #+#             */
-/*   Updated: 2016/11/28 12:41:22 by ochayche         ###   ########.fr       */
+/*   Created: 2017/06/07 11:47:50 by ochayche          #+#    #+#             */
+/*   Updated: 2017/06/07 11:47:51 by ochayche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_memdel(void **ap)
+int			ft_atoi_ptv(char *str)
 {
-	if (ap != 0)
+	int	i;
+	int	res;
+
+	i = 0;
+	res = 0;
+	if (!ft_isdigit(str[i]))
+		return (-1);
+	while (ft_isdigit(str[i]))
 	{
-		free(*ap);
-		*ap = 0;
+		if (res > 214748364 || (res == 214748364 && str[i] >= '8'))
+			return (-1);
+		res = res * 10 + str[i] - '0';
+		++i;
 	}
+	return (str[i] == '\0') ? (res) : (-1);
 }

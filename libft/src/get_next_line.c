@@ -10,6 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** !!!ATTENTION!!!
+** `line` must be initialized to NULL before first call of function
+** have a nice day!
+*/
+
 #include "libft.h"
 
 static t_lst				*add_struct(int fd)
@@ -100,7 +106,7 @@ int							get_next_line(const int fd, char **line)
 	if (!(lst = get_struct(&head, fd)) || fd < 0 || BUFF_SIZE == 0
 		|| line == NULL)
 		return (-1);
-	*line = NULL;
+	ft_strdel(line);
 	if ((check(&lst->cut, line)))
 		return (1);
 	while ((ret = read(fd, buf, BUFF_SIZE)))
@@ -113,6 +119,6 @@ int							get_next_line(const int fd, char **line)
 	}
 	if (*line)
 		return (1);
-	*line = ft_strdup("");
+	ft_delnode(&head, lst);
 	return (0);
 }

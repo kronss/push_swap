@@ -32,6 +32,10 @@ int	make_pb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	// print_stacks(*stack_a, *stack_b) : 0;
 	// block->size_a--;
 	// block->size_b++;
+
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
+
 	return (1);
 }
 
@@ -55,6 +59,8 @@ int	make_pa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	// print_stacks(*stack_a, *stack_b) : 0;
 	// block->size_a++;
 	// block->size_b--;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
 	return (1);
 }
 
@@ -79,6 +85,8 @@ int	make_sa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	// block->debug == 1 ? ft_printf("\nsa\n") &&
 	// print_stacks(*stack_a, *stack_b) : 0;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
 	return (1);
 }
 
@@ -103,6 +111,8 @@ int	make_sb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	// block->debug == 1 ? ft_printf("\nsb\n") &&
 	// print_stacks(*stack_a, *stack_b) : 0;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
 	return (1);
 }
 
@@ -127,6 +137,8 @@ int	make_ss(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	// block->debug == 1 ? ft_printf("\nss\n") &&
 	// print_stacks(*stack_a, *stack_b) : 0;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
 	return (1);
 }
 	
