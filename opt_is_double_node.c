@@ -1,4 +1,8 @@
 
+//RECODE!!!
+//HEADER
+
+
 #include "push_swap.h"
 
 static int		compare_ss(char *str1, char *str2)

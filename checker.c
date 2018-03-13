@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-static	void	checker(t_stack *stack_a, t_stack *stack_b)
+static void		checker(t_stack *stack_a, t_stack *stack_b)
 {
-	int		tmp;
+	int			tmp;
 
 	tmp = stack_a->data;
 	if (stack_a)
@@ -38,10 +38,10 @@ static	void	checker(t_stack *stack_a, t_stack *stack_b)
 
 int				main(int ar, char **av)
 {
-	t_block			block;
-	t_stack			*stack_a;
-	t_stack			*stack_b;
-	int				i;
+	t_block		block;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	int			i;
 
 	init_var(&block, &stack_a, &stack_b);
 	i = read_flags(&block, av, ar, CHECKER);

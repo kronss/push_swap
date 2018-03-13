@@ -1,10 +1,12 @@
 
+//HEADER
+
 #include "push_swap.h"
 
-static inline void			dellete_two_nodes(t_oper *curr)
+static inline void	dellete_two_nodes(t_oper *curr)
 {
-	t_oper *del1;
-	t_oper *del2;
+	t_oper		*del1;
+	t_oper		*del2;
 
 	del1 = curr->next;
 	del2 = curr->next->next;
@@ -13,7 +15,7 @@ static inline void			dellete_two_nodes(t_oper *curr)
 	ft_memdel((void **)&del1);
 }
 
-static  int		compare_anti(char *str1, char *str2)
+static int			compare_anti(char *str1, char *str2)
 {
 	if (!ft_strcmp(str1, "pb"))
 		if (!ft_strcmp(str2, "pa"))
@@ -42,11 +44,10 @@ static  int		compare_anti(char *str1, char *str2)
 	return (0);
 }
 
-
-int	opt_is_have_anti_oper(t_oper *oper)
+int					opt_is_have_anti_oper(t_oper *oper)
 {
-	t_oper *curr;
-	int res;
+	t_oper		*curr;
+	int			res;
 
 	curr = oper;
 	res = FALSE;

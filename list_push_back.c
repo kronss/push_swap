@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_stack	*create_elem(int a)
+t_stack			*create_elem(int a)
 {
 	t_stack		*new;
 

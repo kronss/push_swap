@@ -44,11 +44,6 @@ static void	a_less_then_b(t_stack **stk_a, t_stack **stk_b, t_block *block)
 	}
 }
 
-/*
-** 
-**
-**
-*/
 void		frst_sort_3_a(t_stack **stk_a, t_stack **stk_b, t_block *block)
 {
 	if ((*stk_a)->data < (*stk_a)->next->data)

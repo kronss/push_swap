@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-static void		two_to_three(t_oper *curr, char *s1, char *s2)
+static void	two_to_three(t_oper *curr, char *s1, char *s2)
 {
-	t_oper *del;
+	t_oper	*del;
 
 	del = curr->next;
 	curr->next = curr->next->next;
@@ -23,10 +23,10 @@ static void		two_to_three(t_oper *curr, char *s1, char *s2)
 	ft_memdel((void **)&del);
 }
 
-int opt_is_extra_oper(t_oper *oper)
+int			opt_is_extra_oper(t_oper *oper)
 {
-	t_oper *curr;
-	int res;
+	t_oper	*curr;
+	int		res;
 
 	curr = oper;
 	res = FALSE;
@@ -59,6 +59,6 @@ void		optimization(t_block *block)
 		is_running = FALSE;
 		is_running = opt_is_have_anti_oper(block->oper) ? TRUE : is_running;
 		is_running = opt_is_double_node(block->oper) ? TRUE : is_running;
-		// is_running = opt_is_extra_oper(block->oper) ? TRUE : is_running;
+		// is_running = opt_is_extra_oper(block->oper) ? TRUE : is_running;       //RECODE AND CHECK
 	}
 }

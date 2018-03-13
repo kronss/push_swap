@@ -1,30 +1,26 @@
+
+//HEADER
+
 #include "push_swap.h"
 
-static void			list_push_back_copy_a(t_stack **begin_list, int data)
+static void		list_push_back_copy_a(t_stack **begin_list, int data)
 {
 	t_stack		*curr;
 
 	curr = *begin_list;
-
-	// printf("%p %p\n", begin_list, *begin_list);
-
-
 	if (curr)
 	{
-		// printf("dick1\n");
 		while (curr->next)
 			curr = curr->next;
 		curr->next = create_elem(data);
 	}
 	else
 	{
-		// printf("dick2\n");
 		*begin_list = create_elem(data);
-		// printf("dick3\n");
 	}
 }
 
-void 	create_dirty_copy_a(t_stack *tmp_a, t_block *block)
+void 			create_dirty_copy_a(t_stack *tmp_a, t_block *block)
 {
 	while (tmp_a)
 	{
@@ -33,10 +29,8 @@ void 	create_dirty_copy_a(t_stack *tmp_a, t_block *block)
 	}
 }
 
-
-
-void	do_operation(t_stack **copy_a, t_stack **stack_b, t_block *block,
-															 char *operation)
+void			do_operation(t_stack **copy_a, t_stack **stack_b,
+											t_block *block, char *operation)
 {
 	if (!ft_strcmp(operation, "pa"))
 		make_pa(copy_a, stack_b, 0, block);
@@ -62,17 +56,15 @@ void	do_operation(t_stack **copy_a, t_stack **stack_b, t_block *block,
 		make_rrr(copy_a, stack_b, 0, block);
 }
 
-
-void	print_operation(t_stack **copy_a, t_stack **stack_b, t_block *block)
+void			print_operation(t_stack **copy_a, t_stack **stack_b,
+															t_block *block)
 {
-	t_oper *curr;
+	t_oper	*curr;
 
 	curr = block->oper;
 	while (curr != NULL)
 	{
 		ft_printf("%s\n", curr->data);
-
-
 		if (block->debug)
 		{
 			do_operation(copy_a, stack_b, block, curr->data);

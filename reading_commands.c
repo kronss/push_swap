@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static	int	choose_operation(t_stack **stack_a, t_stack **stack_b,
+static void		choose_operation(t_stack **stack_a, t_stack **stack_b,
 													t_block *block, char *line)
 {
 	if (!ft_strcmp(line, "sa"))
@@ -38,7 +38,7 @@ static	int	choose_operation(t_stack **stack_a, t_stack **stack_b,
 	else if (!ft_strcmp(line, "rrr"))
 		return (make_rrr(stack_a, stack_b, 0, block));
 	else
-		return (ps_error(4));
+		ps_error(4);
 }
 
 void			reading_commands(t_stack **stack_a, t_stack **stack_b,

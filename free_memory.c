@@ -1,5 +1,5 @@
 
-
+//header
 
 
 #include "push_swap.h"
@@ -16,7 +16,7 @@ static void free_stack(t_stack *head)
 	}
 }
 
-static void free_oper(t_oper *head)
+static void	free_oper(t_oper *head)
 {
 	t_oper *tmp;
 
@@ -28,7 +28,7 @@ static void free_oper(t_oper *head)
 	}
 }
 
-void	free_memory(t_stack **stack_a, t_stack **stack_b, t_block *block)
+void		free_memory(t_stack **stack_a, t_stack **stack_b, t_block *block)
 {
 	free_stack(*stack_a);
 	free_stack(*stack_b);
