@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void				ps_error(char i)
+int					ps_error(char i)
 {
 	i == 1 ? ft_printf("Error\n") : 0;
 	i == 2 ? ft_printf("Error\n") : 0;
@@ -20,4 +20,5 @@ void				ps_error(char i)
 	i == 4 ? ft_printf("Error\n") : 0;
 	i == 5 ? ft_printf("Error\n") : 0;
 	exit(i);
+	return (-1);
 }

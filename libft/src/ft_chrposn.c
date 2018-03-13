@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_flags.c                                       :+:      :+:    :+:   */
+/*   ft_chrposn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/21 21:19:28 by ochayche          #+#    #+#             */
-/*   Updated: 2017/03/21 21:19:29 by ochayche         ###   ########.fr       */
+/*   Created: 2016/12/05 23:16:44 by ochayche          #+#    #+#             */
+/*   Updated: 2016/12/05 23:16:45 by ochayche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int		read_flags(t_block *block, char **av, int ar, int program)
+int			ft_chrposn(char *str, char c)
 {
 	int	i;
-	int	j;
 
-	i = 1;
-	while (i < ar && av[i][0] == '-' && ft_strchr("vcf", av[i][1]))
-	{
-		j = 1;
-		while (av[i][j] != '\0')
-		{
-			if (av[i][j] == 'v')
-				block->debug = 1;
-			else if (av[i][j] == 'c')
-				block->color = 1;
-			else if (av[i][j] == 'f')
-				block->file = 1;
-			j++;
-		}
-		i++;
-	}
-	block->program = program;
-	return (i);
+	i = -1;
+	while (str[++i] != '\0')
+		if (str[i] == c)
+			return (i);
+	return (0);
 }

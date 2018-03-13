@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void				make_ra(t_stack **stack_a, t_stack **stack_b, char c,
-t_block *block)
+int	make_ra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack			*last;
 	t_stack			*tmp;
 
+	stack_b = stack_b;
 	if ((*stack_a) && (*stack_a)->next)
 	{
 		last = *stack_a;
@@ -30,19 +30,22 @@ t_block *block)
 	}
 	if (c == 1)
 	{
-		block->debug == 1 ? 0 : ft_printf("ra\n");
+		// block->debug == 1 ? 0 : ft_printf("ra\n");
 		operation_push_back(&block->oper, "ra");
 	}
-	block->debug == 1 ? ft_printf("\nra\n") &&
-	print_stacks(*stack_a, *stack_b) : 0;
+	// block->debug == 1 ? ft_printf("\nra\n") &&
+	// print_stacks(*stack_a, *stack_b) : 0;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
+	return (1);
 }
 
-void				make_rb(t_stack **stack_a, t_stack **stack_b, char c,
-t_block *block)
+int	make_rb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	t_stack			*last;
 	t_stack			*tmp;
 
+	stack_a = stack_a;
 	if ((*stack_b) && (*stack_b)->next)
 	{
 		last = *stack_b;
@@ -55,15 +58,17 @@ t_block *block)
 	}
 	if (c == 1)
 	{
-		block->debug == 1 ? 0 : ft_printf("rb\n");
+		// block->debug == 1 ? 0 : ft_printf("rb\n");
 		operation_push_back(&block->oper, "rb");
 	}
-	block->debug == 1 ? ft_printf("\nrb\n") &&
-	print_stacks(*stack_a, *stack_b) : 0;
+	// block->debug == 1 ? ft_printf("\nrb\n") &&
+	// print_stacks(*stack_a, *stack_b) : 0;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
+	return (1);
 }
 
-void				make_rr(t_stack **stack_a, t_stack **stack_b, char c,
-t_block *block)
+int	make_rr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 {
 	if (block->debug == 1)
 	{
@@ -79,8 +84,11 @@ t_block *block)
 	}
 	if (c == 1)
 	{
-		block->debug == 1 ? 0 : ft_printf("rr\n");
+		// block->debug == 1 ? 0 : ft_printf("rr\n");
 		operation_push_back(&block->oper, "rr");
 	}
-	block->debug ? ft_printf("\nrr\n") && print_stacks(*stack_a, *stack_b) : 0;
+	// block->debug ? ft_printf("\nrr\n") && print_stacks(*stack_a, *stack_b) : 0;
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
+	return (1);
 }

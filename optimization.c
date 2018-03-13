@@ -12,46 +12,53 @@
 
 #include "push_swap.h"
 
-int		compare(char *str1, char *str2)
+static void		two_to_three(t_oper *curr, char *s1, char *s2)
 {
-	if (!strcmp(str1, "pa"))
-		if (!strcmp(str2, "pb"))
-			return (1);
-	if (!strcmp(str1, "pb"))
-		if (!strcmp(str2, "pa"))
-			return (1);
-	if (!strcmp(str1, "rra"))
-		if (!strcmp(str2, "ra"))
-			return (1);
-	if (!strcmp(str1, "ra"))
-		if (!strcmp(str2, "rra"))
-			return (1);
-	if (!strcmp(str1, "rb"))
-		if (!strcmp(str2, "rrb"))
-			return (1);
-	if (!strcmp(str1, "rrb"))
-		if (!strcmp(str2, "rb"))
-			return (1);
-	return (0);
+	t_oper *del;
+
+	del = curr->next;
+	curr->next = curr->next->next;
+	curr->next->data = s1;
+	curr->next->next->data = s2;
+	ft_memdel((void **)&del);
 }
 
-int		optimization(t_block *block, t_oper **oper)
+int opt_is_extra_oper(t_oper *oper)
 {
-	t_oper	*tmp;
-	t_oper	*tmp2;
+	t_oper *curr;
+	int res;
 
-	if (block)
-		;
-	tmp = (*oper);
-	while (tmp->next && tmp->next->next)
+	curr = oper;
+	res = FALSE;
+	while (curr && curr->next && curr->next->next)
 	{
-		if (compare(tmp->next->data, tmp->next->next->data))
+		if (!ft_strcmp(curr->data, "ra") && 
+			!ft_strcmp(curr->next->data, "pb") &&
+			!ft_strcmp(curr->next->next->data, "rra"))
 		{
-			tmp2 = tmp->next->next->next;
-			tmp->next = tmp2;
-			return (1);
+			two_to_three(curr, "sa", "pb");
 		}
-		tmp = tmp->next;
+		else if (!ft_strcmp(curr->data, "rb") &&
+				 !ft_strcmp(curr->next->data, "pa") &&
+				 !ft_strcmp(curr->next->next->data, "rrb"))
+		{
+			two_to_three(curr, "sb", "pa");
+		}
+		curr = curr->next;
 	}
-	return (0);
+	return (res);
+}
+
+void		optimization(t_block *block)
+{
+	int is_running;
+
+	is_running = TRUE;
+	while (is_running)
+	{
+		is_running = FALSE;
+		is_running = opt_is_have_anti_oper(block->oper) ? TRUE : is_running;
+		is_running = opt_is_double_node(block->oper) ? TRUE : is_running;
+		// is_running = opt_is_extra_oper(block->oper) ? TRUE : is_running;
+	}
 }

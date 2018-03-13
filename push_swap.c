@@ -12,118 +12,100 @@
 
 #include "push_swap.h"
 
-static void	sort_3_elem_a(t_stack **stack_a, t_stack **stack_b, t_block *block,
-																int max_size)
+static inline void	init_var_array(int *variable, int cnt)
 {
-	int i;
-
-	i = linked_list_len(*stack_a);
-	if (i <= 3)
-	{
-		i == 3 ? frst_sort_3_a(stack_a, stack_b, block) : 0;
-		i == 2 ? sort_2_elem_a(stack_a, stack_b, block) : 0;
-		block->rra = 1;
-	}
-	else
-	{
-		max_size == 3 ? next_sort_3_a(stack_a, stack_b, block) : 0;
-		max_size == 2 ? sort_2_elem_a(stack_a, stack_b, block) : 0;
-	}
+	variable[PUSHED_CNT] = 0;
+	variable[PIVOT] = 0;
+	variable[SIZE] = cnt;
+	variable[ROTATE_CNT] = 0;
 }
 
-static void	sort_3_elem_b(t_stack **stack_a, t_stack **stack_b, t_block *block,
-																int max_size)
+void		recn_a(t_stack **stack_a, t_stack **stack_b, t_block *block, int cnt)
 {
-	int i;
+	int		variable[MAX_VAR];
+	// int		variable[PUSHED_CNT];
+	// int		variable[PIVOT];
+	// int		variable[SIZE];
+	// int		variable[ROTATE_CNT];
 
-	i = linked_list_len(*stack_b);
-	if (i <= 3)
+	init_var_array(variable, cnt);
+	if (cnt < 3)
+		return (sort_3_elem_a(stack_a, stack_b, block, cnt));
+	variable[PIVOT] = find_pivot(*stack_a, cnt);
+	while (cnt >= 0)
 	{
-		i == 3 ? last_sort_3_b(stack_a, stack_b, block) : 0;
-		i == 2 ? sort_2_elem_b(stack_a, stack_b, block) : 0;
-		block->rra = 0;
-	}
-	else
-	{
-		max_size == 3 ? next_sort_3_b(stack_a, stack_b, block) : 0;
-		max_size == 2 ? sort_2_elem_b(stack_a, stack_b, block) : 0;
-	}
-}
-
-void		recn_a(t_stack **stack_a, t_stack **stack_b, t_block *block,
-															int pushed_a)
-{
-	int push_b;
-	int rra;
-
-	push_b = 0;
-	rra = 0;
-	if (pushed_a <= 3)
-		return (sort_3_elem_a(stack_a, stack_b, block, pushed_a));
-	block->pivot_i = find_pivot(*stack_a, pushed_a);
-	while (find_rem_a(*stack_a, block->pivot_i, pushed_a - push_b))
-	{
-		if ((*stack_a)->data <= block->pivot_i && ++push_b)
+		if (!rem_less_then_pivot(*stack_a, variable[PIVOT], cnt))
+			break;	
+		if ((*stack_a)->data < variable[PIVOT] && ++variable[PUSHED_CNT])
 			make_pb(stack_a, stack_b, 1, block);
 		else
 		{
 			make_ra(stack_a, stack_b, 1, block);
-			rra++;
+			variable[ROTATE_CNT]++;
 		}
+		cnt--;
 	}
-	if (block->rra == 1)
-		backtrack_stack_a(stack_a, stack_b, block, rra);
-	recn_a(stack_a, stack_b, block, pushed_a - push_b);
-	recn_b(stack_a, stack_b, block, push_b);
-	while (push_b--)
+	while (variable[ROTATE_CNT]-- && linked_list_len(*stack_a) != variable[SIZE] - variable[PUSHED_CNT])
+		make_rra(stack_a, stack_b, 1, block);
+	recn_a(stack_a, stack_b, block, variable[SIZE] - variable[PUSHED_CNT]);	
+	recn_b(stack_a, stack_b, block, variable[PUSHED_CNT]);
+	while (variable[PUSHED_CNT]--)
 		make_pa(stack_a, stack_b, 1, block);
 }
 
-void		recn_b(t_stack **stack_a, t_stack **stack_b,
-t_block *block, int pushed_b)
+void		recn_b(t_stack **stack_a, t_stack **stack_b, t_block *block, int cnt)
 {
-	int push_a;
-	int rrb;
+	int		variable[MAX_VAR];
 
-	if (pushed_b <= 3)
-		return (sort_3_elem_b(stack_a, stack_b, block, pushed_b));
-	push_a = 0;
-	rrb = 0;
-	block->pivot_i = find_pivot(*stack_b, pushed_b);
-	while (find_rem_b(*stack_b, block->pivot_i, pushed_b - push_a))
+	init_var_array(variable, cnt);
+	if (cnt < 3)
+		return (sort_3_elem_b(stack_a, stack_b, block, cnt));
+	variable[PIVOT] = find_pivot(*stack_b, cnt);
+	while (cnt >= 0)
 	{
-		if ((*stack_b)->data > block->pivot_i && ++push_a)
+		if (!rem_more_then_pivot(*stack_b, variable[PIVOT], cnt))
+			break;
+		if ((*stack_b)->data > variable[PIVOT] && ++variable[PUSHED_CNT])
 			make_pa(stack_a, stack_b, 1, block);
 		else
 		{
 			make_rb(stack_a, stack_b, 1, block);
-			rrb++;
+			variable[ROTATE_CNT]++;
 		}
+		cnt--;
 	}
-	recn_a(stack_a, stack_b, block, pushed_b);
-	if (block->rra == 1)
-		backtrack_stack_b(stack_a, stack_b, block, rrb);
-	recn_b(stack_a, stack_b, block, pushed_b - push_a);
-	while (push_a--)
+	recn_a(stack_a, stack_b, block, variable[PUSHED_CNT]);
+	while (variable[ROTATE_CNT]-- && linked_list_len(*stack_b) != variable[SIZE] - variable[PUSHED_CNT])
+		make_rrb(stack_a, stack_b, 1, block);
+	recn_b(stack_a, stack_b, block, variable[SIZE] - variable[PUSHED_CNT]);
+	while (variable[PUSHED_CNT]--)
 		make_pb(stack_a, stack_b, 1, block);
 }
 
 int			main(int ar, char **av)
 {
-	t_block			block;
-	t_stack			*stack_a;
-	t_stack			*stack_b;
-	int				i;
+	t_block	block;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		i;
 
 	init_var(&block, &stack_a, &stack_b);
-	i = read_flags(&block, av, ar);
+	i = read_flags(&block, av, ar, PUSH_SWAP);
 	while (i < ar)
 	{
 		list_push_back(&stack_a, ft_atol(av[i]), av[i]);
 		i++;
 	}
 	pre_validate(stack_a, &block);
-	block.max_size > 1 ? recn_a(&stack_a, &stack_b, &block, block.max_size) : 0;
-	block.file ? print_stacks(stack_a, stack_b) : 0;
+	if (is_sorted(stack_a))
+		return (0);
+	create_dirty_copy_a(stack_a, &block);
+	block.size_a = linked_list_len(stack_a);
+	block.max_size > 1 ? recn_a(&stack_a, &stack_b, &block, block.size_a) : 0;
+
+	optimization(&block);
+
+	print_operation(&block.copy_a, &stack_b, &block);
+	free_memory(&stack_a, &stack_b, &block);
 	return (0);
 }

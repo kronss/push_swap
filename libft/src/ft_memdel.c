@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_flags.c                                       :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/21 21:19:28 by ochayche          #+#    #+#             */
-/*   Updated: 2017/03/21 21:19:29 by ochayche         ###   ########.fr       */
+/*   Created: 2016/11/28 12:41:21 by ochayche          #+#    #+#             */
+/*   Updated: 2016/11/28 12:41:22 by ochayche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int		read_flags(t_block *block, char **av, int ar, int program)
+void		ft_memdel(void **ap)
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	while (i < ar && av[i][0] == '-' && ft_strchr("vcf", av[i][1]))
+	if (ap != NULL)
 	{
-		j = 1;
-		while (av[i][j] != '\0')
+		if (*ap != NULL)
 		{
-			if (av[i][j] == 'v')
-				block->debug = 1;
-			else if (av[i][j] == 'c')
-				block->color = 1;
-			else if (av[i][j] == 'f')
-				block->file = 1;
-			j++;
+			free(*ap);
+			*ap = NULL;
 		}
-		i++;
 	}
-	block->program = program;
-	return (i);
 }

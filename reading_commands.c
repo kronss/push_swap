@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static	void	choose_operation(t_stack **stack_a, t_stack **stack_b,
+static	int	choose_operation(t_stack **stack_a, t_stack **stack_b,
 													t_block *block, char *line)
 {
 	if (!ft_strcmp(line, "sa"))
@@ -46,6 +46,8 @@ void			reading_commands(t_stack **stack_a, t_stack **stack_b,
 {
 	char		*line;
 
+	if (block->debug && block->program == CHECKER)
+		print_stacks(*stack_a, *stack_b);
 	while ((get_next_line(STDIN, &line)) > 0)
 		choose_operation(stack_a, stack_b, block, line);
 	ft_strdel(&line);
