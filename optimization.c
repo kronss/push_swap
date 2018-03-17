@@ -59,5 +59,6 @@ void		optimization(t_block *block)
 		is_running = FALSE;
 		is_running = opt_is_have_anti_oper(&block->oper) ? TRUE : is_running;
 		is_running = opt_is_double_node(&block->oper) ? TRUE : is_running;
+		// is_running = opt_is_extra_oper(block->oper) ? TRUE : is_running;
 	}
 }

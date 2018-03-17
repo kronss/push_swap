@@ -88,7 +88,7 @@ fclean: clean
 re: fclean all
 
 r100: all
-	./$(NAME) $(TEST100) | ./$(NAME_2) $(TEST100)
+	./$(NAME) $(TEST100) #| ./$(NAME_2) $(TEST100)
 
 r100wcl: all
 	./$(NAME) $(TEST100) | wc -l
