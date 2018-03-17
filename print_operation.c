@@ -1,5 +1,14 @@
-
-//HEADER
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_operation.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/17 12:48:18 by ochayche          #+#    #+#             */
+/*   Updated: 2018/03/17 12:48:19 by ochayche         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -20,7 +29,7 @@ static void		list_push_back_copy_a(t_stack **begin_list, int data)
 	}
 }
 
-void 			create_dirty_copy_a(t_stack *tmp_a, t_block *block)
+void			create_dirty_copy_a(t_stack *tmp_a, t_block *block)
 {
 	while (tmp_a)
 	{

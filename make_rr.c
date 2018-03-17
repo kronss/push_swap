@@ -17,7 +17,7 @@ void	make_ra(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	t_stack		*last;
 	t_stack		*tmp;
 
-	stack_b = stack_b;
+	(void)stack_b;
 	if ((*stack_a) && (*stack_a)->next)
 	{
 		last = *stack_a;
@@ -41,7 +41,7 @@ void	make_rb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	t_stack		*last;
 	t_stack		*tmp;
 
-	stack_a = stack_a;
+	(void)stack_a;
 	if ((*stack_b) && (*stack_b)->next)
 	{
 		last = *stack_b;
@@ -71,8 +71,8 @@ void	make_rr(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	}
 	else
 	{
-		make_ra(stack_a, stack_b, 0, 0);
-		make_rb(stack_b, stack_a, 0, 0);
+		make_ra(stack_a, stack_b, 0, block);
+		make_rb(stack_b, stack_a, 0, block);
 	}
 	if (c == 1)
 	{

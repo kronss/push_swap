@@ -1,16 +1,25 @@
-
-//HEADER
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   opt_is_have_anti_oper.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/17 12:45:29 by ochayche          #+#    #+#             */
+/*   Updated: 2018/03/17 12:45:46 by ochayche         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-static inline void	dellete_two_nodes(t_oper *curr)
+static inline void	dellete_two_nodes(t_oper **curr)
 {
 	t_oper		*del1;
 	t_oper		*del2;
 
-	del1 = curr->next;
-	del2 = curr->next->next;
-	curr->next = curr->next->next->next;
+	del1 = (*curr)->next;
+	del2 = (*curr)->next->next;
+	(*curr)->next = (*curr)->next->next->next;
 	ft_memdel((void **)&del2);
 	ft_memdel((void **)&del1);
 }
@@ -44,21 +53,22 @@ static int			compare_anti(char *str1, char *str2)
 	return (0);
 }
 
-int					opt_is_have_anti_oper(t_oper *oper)
+int					opt_is_have_anti_oper(t_oper **head)
 {
 	t_oper		*curr;
 	int			res;
 
-	curr = oper;
+	curr = *head;
 	res = FALSE;
 	while (curr && curr->next && curr->next->next)
 	{
 		if (compare_anti(curr->next->data, curr->next->next->data))
 		{
-			dellete_two_nodes(curr);
+			dellete_two_nodes(&curr);
 			res = TRUE;
+			break ;
 		}
 		curr = curr->next;
 	}
-	return res;
+	return (res);
 }

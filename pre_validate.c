@@ -48,7 +48,6 @@ void			pre_validate(t_stack *stack_a, t_block *block)
 	tmp = stack_a;
 	while (tmp)
 	{
-		tmp->p = block->max_size - 1;
 		tmp = tmp->next;
 	}
 }
