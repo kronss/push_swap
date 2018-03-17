@@ -52,7 +52,7 @@ static void	a_less_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 	{
 		if ((*stack_a)->data < (*stack_a)->next->next->data)
 		{
-			make_rra(stack_a, stack_b, 1, block);
+			make_ra(stack_a, stack_b, 1, block);
 			make_sa(stack_a, stack_b, 1, block);
 			make_rra(stack_a, stack_b, 1, block);
 		}

@@ -1,12 +1,20 @@
-
-//header
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_memory.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/17 12:34:51 by ochayche          #+#    #+#             */
+/*   Updated: 2018/03/17 12:35:13 by ochayche         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void free_stack(t_stack *head)
+static void	free_stack(t_stack *head)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	while (head != NULL)
 	{
@@ -18,7 +26,7 @@ static void free_stack(t_stack *head)
 
 static void	free_oper(t_oper *head)
 {
-	t_oper *tmp;
+	t_oper	*tmp;
 
 	while (head != NULL)
 	{

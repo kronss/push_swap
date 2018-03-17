@@ -12,7 +12,8 @@
 
 #include "push_swap.h"
 
-void	a_bigger_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
+static void	a_bigger_then_b(t_stack **stack_a, t_stack **stack_b,
+															t_block *block)
 {
 	if ((*stack_b)->next->data < (*stack_b)->next->next->data)
 	{
@@ -21,18 +22,18 @@ void	a_bigger_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 			make_rb(stack_a, stack_b, 1, block);
 			make_sb(stack_a, stack_b, 1, block);
 			make_rrb(stack_a, stack_b, 1, block);
+			make_sb(stack_a, stack_b, 1, block);
 		}
-		else if ((*stack_b)->data < (*stack_b)->next->next->data)
+		else if ((*stack_b)->data > (*stack_b)->next->next->data)
 		{
 			make_rb(stack_a, stack_b, 1, block);
 			make_sb(stack_a, stack_b, 1, block);
 			make_rrb(stack_a, stack_b, 1, block);
-			make_sb(stack_a, stack_b, 1, block);
 		}
 	}
 }
 
-void	a_less_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
+static void	a_less_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 {
 	if ((*stack_b)->next->data > (*stack_b)->next->next->data)
 	{
@@ -58,7 +59,7 @@ void	a_less_then_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 	}
 }
 
-void	next_sort_3_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
+void		next_sort_3_b(t_stack **stack_a, t_stack **stack_b, t_block *block)
 {
 	if ((*stack_b)->data > (*stack_b)->next->data)
 		a_bigger_then_b(stack_a, stack_b, block);

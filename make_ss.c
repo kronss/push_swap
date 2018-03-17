@@ -55,7 +55,7 @@ void	make_sa(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	t_stack		*frst;
 	t_stack		*scnd;
 
-	stack_b = stack_b;
+	(void)stack_b;
 	frst = (*stack_a);
 	if (frst && frst->next)
 	{
@@ -77,7 +77,7 @@ void	make_sb(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	t_stack		*frst;
 	t_stack		*scnd;
 
-	stack_a = stack_a;
+	(void)stack_a;
 	frst = (*stack_b);
 	if (frst && frst->next)
 	{
@@ -115,4 +115,3 @@ void	make_ss(t_stack **stack_a, t_stack **stack_b, char c, t_block *block)
 	if (block->debug && block->program == CHECKER)
 		print_stacks(*stack_a, *stack_b);
 }
-	

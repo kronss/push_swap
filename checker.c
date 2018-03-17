@@ -12,28 +12,32 @@
 
 #include "push_swap.h"
 
-static void		checker(t_stack *stack_a, t_stack *stack_b)
+static void		checker(t_stack **stack_a, t_stack **stack_b)
 {
-	int			tmp;
+	int			prev_value;
+	t_stack		*curr;
 
-	tmp = stack_a->data;
-	if (stack_a)
+	if (!(*stack_a) || *stack_b)
 	{
-		while (stack_a)
+		ft_printf("KO\n");
+		return ;
+	}
+	curr = *stack_a;
+	prev_value = curr->data;
+	if (curr)
+	{
+		while (curr)
 		{
-			if (tmp > stack_a->data)
+			if (prev_value > curr->data)
 			{
 				ft_printf("KO\n");
 				return ;
 			}
-			tmp = stack_a->data;
-			stack_a = stack_a->next;
+			prev_value = curr->data;
+			curr = curr->next;
 		}
 	}
-	if (!stack_b && !stack_a)
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
+	ft_printf("OK\n");
 }
 
 int				main(int ar, char **av)
@@ -52,7 +56,7 @@ int				main(int ar, char **av)
 	}
 	pre_validate(stack_a, &block);
 	reading_commands(&stack_a, &stack_b, &block);
-	checker(stack_a, stack_b);
+	checker(&stack_a, &stack_b);
 	free_memory(&stack_a, &stack_b, &block);
 	return (0);
 }

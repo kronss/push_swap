@@ -18,7 +18,7 @@ int		read_flags(t_block *block, char **av, int ar, int program)
 	int	j;
 
 	i = 1;
-	while (i < ar && av[i][0] == '-' && ft_strchr("vcf", av[i][1]))
+	while (i < ar && av[i][0] == '-' && ft_strchr("v", av[i][1]))
 	{
 		j = 1;
 		while (av[i][j] != '\0')

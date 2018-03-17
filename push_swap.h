@@ -6,7 +6,7 @@
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 17:56:28 by ochayche          #+#    #+#             */
-/*   Updated: 2017/03/16 17:56:30 by ochayche         ###   ########.fr       */
+/*   Updated: 2018/03/17 15:56:49 by ochayche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft.h"
-// # include "ft_printf.h"
-
-# include "stdio.h"
-# define ft_printf printf //dell
+# include "ft_printf.h"
 
 # define TRUE  1
 # define FALSE 0
 # define CHECKER 1
 # define PUSH_SWAP 2
-
-
-
 
 /*
 ** PSHD  == pushed count
@@ -35,7 +29,9 @@
 ** ROTAT == rotate count
 */
 
-enum e_enum //typedef ?
+typedef unsigned int	t_uint;
+
+enum	e_enum
 {
 	PSHD = 0,
 	PIVOT,
@@ -47,7 +43,6 @@ enum e_enum //typedef ?
 typedef struct		s_stack
 {
 	int				data;
-	int				p;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -68,10 +63,10 @@ typedef struct		s_block
 	t_oper			*oper;
 	t_stack			*copy_a;
 
-	uint			size_a;
-	uint			size_b;
-	uint			max_a_operation;
-	uint			max_b_operation;
+	t_uint			size_a;
+	t_uint			size_b;
+	t_uint			max_a_operation;
+	t_uint			max_b_operation;
 	int				program;
 }					t_block;
 
@@ -109,10 +104,6 @@ void				make_rra(t_stack **s_a, t_stack **s_b, char c, t_block *bk);
 void				make_rrb(t_stack **s_a, t_stack **s_b, char c, t_block *bk);
 void				make_rrr(t_stack **s_a, t_stack **s_b, char c, t_block *bk);
 int					print_stacks(t_stack *s_a, t_stack *s_b);
-void				backtrack_stack_a(t_stack **stack_a, t_stack **stack_b,
-													t_block *block, int rra);
-void				backtrack_stack_b(t_stack **stack_a, t_stack **stack_b,
-													t_block *block, int rrb);
 int					is_sorted(t_stack *curr);
 void				sort_3_elem_a(t_stack **stack_a, t_stack **stack_b,
 												t_block *block, int cnt);
@@ -125,7 +116,7 @@ void				print_operation(t_stack **copy_a, t_stack **stack_b,
 																t_block *block);
 void				free_memory(t_stack **stack_a, t_stack **stack_b,
 																t_block *block);
-int					opt_is_have_anti_oper(t_oper *oper);
-int					opt_is_double_node(t_oper *oper);
+int					opt_is_have_anti_oper(t_oper **oper);
+int					opt_is_double_node(t_oper **oper);
 
 #endif

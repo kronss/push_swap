@@ -17,6 +17,7 @@
 ** used for recn_a
 ** if any number less then pivot
 */
+
 int			rem_less_then_pivot(t_stack *curr, int pivot, int max)
 {
 	int		i;
@@ -37,6 +38,7 @@ int			rem_less_then_pivot(t_stack *curr, int pivot, int max)
 ** used for recn_b
 ** if any number more then pivot
 */
+
 int			rem_more_then_pivot(t_stack *curr, int pivot, int max)
 {
 	int		i;
@@ -66,8 +68,7 @@ int			find_pivot(t_stack *tmp, int max_size)
 	}
 	i--;
 	q_sort(arr, 0, i);
-
-	return (arr[(i + 1)/ 2]);
+	return (arr[(i + 1) / 2]);
 }
 
 int			linked_list_len(t_stack *tmp)

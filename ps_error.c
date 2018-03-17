@@ -14,11 +14,7 @@
 
 int					ps_error(char i)
 {
-	i == 1 ? ft_printf("Error\n") : 0;
-	i == 2 ? ft_printf("Error\n") : 0;
-	i == 3 ? ft_printf("Error\n") : 0;
-	i == 4 ? ft_printf("Error\n") : 0;
-	i == 5 ? ft_printf("Error\n") : 0;
+	ft_putendl_fd("Error", 2);
 	exit(i);
 	return (-1);
 }

@@ -19,7 +19,6 @@ t_stack			*create_elem(int a)
 	if (!(new = malloc(sizeof(t_stack *))))
 		return (NULL);
 	new->data = a;
-	new->p = 0;
 	new->next = NULL;
 	return (new);
 }
@@ -29,15 +28,17 @@ void			check_value(char *str)
 	int			i;
 
 	i = 0;
-	if (str[0] == '-' || str[0] == '+')
-		check_value(str + 1);
-	else if (str[0] == '\0')
+	if (str == NULL || str[0] == '\0')
 		ps_error(3);
+	if (str[0] == '-' || str[0] == '+')
+		return (check_value(str + 1));
 	else
 	{
 		while (str[i] != '\0')
 		{
-			if (!('0' <= *str && *str <= '9') || i > 10)
+			if (!('0' <= str[i] && str[i] <= '9'))
+				ps_error(2);
+			if (i > 10)
 				ps_error(2);
 			i++;
 		}
